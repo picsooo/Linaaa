@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+<title data-ar="كل المنتجات — لينا كلين">Tous les produits — Lina Clean</title>
+<meta name="description" content="Toute la gamme Lina Clean : vaisselle, lessive, javel, lave sol, Sanibon, parfumant. Filtrez, recherchez, découvrez chaque couleur.">
+</head><body>
+<div id="hdr"></div>
+<main>
+<section class="phero" style="background:var(--sun)"><div class="bubbles" data-n="16"></div><div class="wrap">
+ <nav class="crumb"><a href="index.html" data-ar="الرئيسية">Accueil</a> / <b data-ar="المنتجات">Produits</b></nav>
+ <h1 data-ar="كل <em>منتجاتنا.</em>">Toute la <em>gamme.</em></h1>
+ <p class="lead" data-ar="ابحثوا، صفّوا واكتشفوا كل لون وكل رائحة. اضغطوا على أي منتج لفيشه التقني.">Recherchez, filtrez et découvrez chaque couleur. Cliquez sur un produit pour sa fiche technique.</p>
+ <div class="acts"><a class="pill dark" href="assistant.html" data-ar="ساعدوني في الاختيار ←">Aidez-moi à choisir →</a></div>
+</div></section>
+
+<section style="padding-top:34px"><div class="wrap">
+ <div class="ctools">
+  <div class="search"><span id="sic"></span><input id="q" type="search" placeholder="Rechercher un produit…" data-ar-ph="ابحثوا عن منتج…"></div>
+  <div class="seg" id="seg"><button class="on" data-m="p" data-ar="المنتجات">Produits</button><button data-m="v" data-ar="كل الألوان والروائح">Toutes les couleurs</button></div>
+ </div>
+ <div class="cchips" id="cc"></div>
+ <div class="ccount" id="cnt"></div>
+ <div class="cgrid" id="grid"></div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="app.js"></script>
+<script>
+document.getElementById('sic').innerHTML=IC.search;
+let mode='p',cat='all',q='';
+const cc=document.getElementById('cc');
+cc.innerHTML=CATS.map(c=>'<button class="chip'+(c[0]==='all'?' on':'')+'" data-c="'+c[0]+'" data-ar="'+A(c[2])+'">'+c[1]+'</button>').join('');
+const norm=s=>(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+const match=p=>cat==='all'||p.cat===cat;
+const hit=(...a)=>!q||a.some(x=>norm(x).includes(norm(q)));
+function draw(){
+ const g=document.getElementById('grid');let n=0,h='';
+ if(mode==='p'){
+  ORDER.map(k=>PRODUCTS[k]).filter(p=>match(p)&&hit(p.name,p.ar,p.tag,p.tagAr,p.short)).forEach(p=>{n++;
+   h+='<a class="tile" style="--bg:'+p.bg+'" href="produit.html?p='+p.slug+'"><div class="ph"><img src="'+p.img+'" alt="" loading="lazy"><span class="fbadge"><i class="ic"></i><b>'+L('Fiche technique','فيش تقني')+'</b></span></div><div class="meta"><span class="tag">'+L(p.tag,p.tagAr)+'</span><h3>'+L(p.name,p.ar)+'</h3><p>'+L(p.short,p.shortAr)+'</p>'+(p.variants?'<div class="cdots">'+p.variants.map(v=>'<i style="--c:'+v.c+'"></i>').join('')+'</div>':'')+'<span class="go">'+L('Fiche technique détaillée','الفيش التقني المفصّل')+'</span></div></a>'});
+ }else{
+  ORDER.map(k=>PRODUCTS[k]).filter(match).forEach(p=>{
+   const items=p.variants?p.variants.map((v,i)=>({v:i,c:v.c,bg:v.bg,n:L(v.n,v.nAr),raw:[v.n,v.nAr]})):[{v:null,c:p.liq,bg:p.bg,n:'',raw:[]}];
+   items.forEach(it=>{if(!hit(p.name,p.ar,p.tag,p.tagAr,...it.raw))return;n++;
+    h+='<a class="vcard" style="--bg:'+it.bg+'" href="produit.html?p='+p.slug+(it.v!==null?'&v='+it.v:'')+'">'+bottle(it.c)+'<b>'+L(p.name,p.ar)+'</b>'+(it.n?'<small>'+it.n+'</small>':'<small>'+L(p.tag,p.tagAr)+'</small>')+'<span class="go">'+L('Fiche technique','الفيش التقني')+'</span></a>'})});
+ }
+ g.innerHTML=h||'<div class="empty-c">'+L('Aucun produit ne correspond à votre recherche.','لا يوجد منتج يطابق بحثكم.')+'</div>';
+ document.getElementById('cnt').textContent=n+' '+(mode==='p'?L(n>1?'produits':'produit','منتج'):L(n>1?'références':'référence','مرجع'));
+ App.refresh();
+}
+document.getElementById('q').oninput=e=>{q=e.target.value;draw()};
+cc.querySelectorAll('button').forEach(b=>b.onclick=()=>{cc.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');cat=b.dataset.c;draw()});
+document.querySelectorAll('#seg button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#seg button').forEach(x=>x.classList.remove('on'));b.classList.add('on');mode=b.dataset.m;draw()});
+document.addEventListener('langchange',draw);
+draw();
+</script></body></html>
