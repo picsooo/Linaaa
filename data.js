@@ -1,27 +1,27 @@
 const IMG='https://lina-clean.com/images/';
 const PRODUCTS={
- vaisselle:{slug:'vaisselle',name:'Liquide vaisselle',ar:'سائل غسيل الأواني',tag:'Cuisine',tagAr:'مطبخ',bg:'#ffd3de',img:IMG+'liquide_vaisselle.jpg',
+ vaisselle:{slug:'vaisselle',name:'Liquide vaisselle',ar:'سائل غسيل الأواني',tag:'Cuisine',tagAr:'مطبخ',bg:'#ffd3de',liq:'#ffb3c6',img:IMG+'liquide_vaisselle.jpg',
   short:'Nette, brillante, au quotidien.',shortAr:'أواني نظيفة ولامعة كل يوم.',
   desc:'Le liquide vaisselle Lina Clean accompagne le nettoyage quotidien de la vaisselle, des ustensiles et des surfaces de cuisine.',
   descAr:'سائل غسيل الأواني من لينا كلين يرافقكم في تنظيف الأواني والأدوات وأسطح المطبخ كل يوم.',
   uses:[['Verser une petite quantité sur une éponge humide ou dans l\'eau de lavage.','صبّ كمية صغيرة على إسفنجة مبلّلة أو في ماء الغسيل.'],['Frotter la vaisselle et les ustensiles.','افركوا الأواني والأدوات.'],['Rincer abondamment à l\'eau claire.','اشطفوا جيدا بالماء النظيف.']],
   cautions:[['Tenir hors de portée des enfants.','يُحفظ بعيدا عن متناول الأطفال.'],['En cas de contact avec les yeux, rincer abondamment à l\'eau.','عند ملامسة العينين اشطفوا بوفرة بالماء.'],['Ne pas ingérer.','لا يُبتلع.']],
   facts:[['Particuliers & pros','للأفراد والمحترفين'],['Usage quotidien','استعمال يومي']],variants:null,cat:'Cuisine'},
- lessive:{slug:'lessive',name:'Liquide lessive',ar:'سائل غسيل الملابس',tag:'Linge',tagAr:'ملابس',bg:'#ffe27a',img:IMG+'lessive.jpg',
+ lessive:{slug:'lessive',name:'Liquide lessive',ar:'سائل غسيل الملابس',tag:'Linge',tagAr:'ملابس',bg:'#ffe27a',liq:'#f3f0ec',img:IMG+'lessive.jpg',
   short:'Le soin du linge, tout en douceur.',shortAr:'عناية بالملابس بكل لطف.',
   desc:'Le liquide lessive Lina Clean prend soin de votre linge au quotidien, pour un lavage efficace à la machine ou à la main.',
   descAr:'سائل غسيل الملابس من لينا كلين يعتني بملابسكم يوميا، لغسيل فعّال بالآلة أو باليد.',
   uses:[['Doser selon la charge et le degré de salissure (voir indications sur l\'emballage).','حدّدوا الكمية حسب حجم الغسيل ودرجة الاتساخ (انظروا إرشادات العبوة).'],['Verser dans le bac à lessive ou dans l\'eau de lavage.','صبّوه في حجرة المسحوق أو في ماء الغسيل.'],['Lancer le cycle puis rincer.','شغّلوا البرنامج ثم اشطفوا.']],
   cautions:[['Tenir hors de portée des enfants.','يُحفظ بعيدا عن متناول الأطفال.'],['Éviter le contact avec les yeux ; rincer à l\'eau si besoin.','تجنّبوا ملامسة العينين واشطفوا بالماء عند الحاجة.'],['Ne pas ingérer.','لا يُبتلع.']],
   facts:[['Machine & main','آلة ويدويا'],['Linge du quotidien','ملابس كل يوم']],variants:null,cat:'Linge'},
- javel:{slug:'javel',name:'Eau de javel',ar:'ماء جافيل',tag:'Désinfection',tagAr:'تعقيم',bg:'#d4f0e2',img:IMG+'javel.jpg',
+ javel:{slug:'javel',name:'Eau de javel',ar:'ماء جافيل',tag:'Désinfection',tagAr:'تعقيم',bg:'#d4f0e2',liq:'#e6f2c2',img:IMG+'javel.jpg',
   short:'Une hygiène rigoureuse.',shortAr:'نظافة صارمة في كل ركن.',
   desc:'L\'eau de javel Lina Clean assure une désinfection et un nettoyage rigoureux des surfaces, pour la maison comme pour les professionnels.',
   descAr:'ماء جافيل من لينا كلين يضمن تعقيما وتنظيفا صارما للأسطح، للبيت وللمحترفين.',
   uses:[['Diluer dans de l\'eau selon l\'usage souhaité.','خفّفوه بالماء حسب الاستعمال المطلوب.'],['Appliquer sur la surface et laisser agir quelques minutes.','ضعوه على السطح واتركوه دقائق ليعمل.'],['Rincer abondamment à l\'eau claire.','اشطفوا جيدا بالماء النظيف.']],
   cautions:[['Ne jamais mélanger avec un autre produit (détartrant, acide, ammoniaque) : risque de gaz dangereux.','لا تخلطوه أبدا بأي منتج آخر (مزيل الكلس، حمض، أمونياك): خطر انبعاث غازات ضارة.'],['Utiliser dans un endroit aéré et porter des gants.','استعملوه في مكان مهوّى مع ارتداء القفازات.'],['Tenir hors de portée des enfants.','يُحفظ بعيدا عن متناول الأطفال.']],
   facts:[['Désinfection','تعقيم'],['Maison & pros','البيت والمحترفون']],variants:null,cat:'Désinfection'},
- lavesol:{slug:'lavesol',name:'Lave sol',ar:'منظّف الأرضيات',tag:'Sols',tagAr:'أرضيات',bg:'#ffc9b8',img:IMG+'lave_sol.jpg',
+ lavesol:{slug:'lavesol',name:'Lave sol',ar:'منظّف الأرضيات',tag:'Sols',tagAr:'أرضيات',bg:'#ffc9b8',liq:'#f0c48f',img:IMG+'lave_sol.jpg',
   short:'Des sols impeccables.',shortAr:'أرضيات نظيفة ومعطّرة.',
   desc:'Le lave sol Lina Clean nettoie et parfume vos sols. La gamme se décline en cinq parfums pour habiller chaque pièce.',
   descAr:'منظّف الأرضيات من لينا كلين ينظّف ويعطّر أرضياتكم، وتتوفر التشكيلة في خمسة عطور لكل غرفة.',
@@ -29,7 +29,7 @@ const PRODUCTS={
   cautions:[['Tester sur une zone discrète pour les revêtements délicats.','جرّبوه على مكان غير ظاهر للأرضيات الحسّاسة.'],['Tenir hors de portée des enfants.','يُحفظ بعيدا عن متناول الأطفال.'],['Ne pas mélanger avec d\'autres produits.','لا يُخلط بمنتجات أخرى.']],
   facts:[['5 parfums','5 عطور'],['Sols & carrelage','أرضيات وبلاط']],
   variants:[{n:'Ambre',nAr:'كهرمان',c:'#f0c48f',bg:'#ffd9b8'},{n:'Vert',nAr:'أخضر',c:'#9fd88a',bg:'#d9f0cd'},{n:'Blanc',nAr:'أبيض',c:'#ffffff',bg:'#f1f1f1'},{n:'Rose',nAr:'وردي',c:'#f39ab0',bg:'#ffd0dc'},{n:'Bleu',nAr:'أزرق',c:'#6fc3ee',bg:'#cfeaff'}],cat:'Sols'},
- sanibon:{slug:'sanibon',name:'Sanibon',ar:'سانيبون',tag:'Sanitaires',tagAr:'حمّامات',bg:'#d7dcff',img:IMG+'sanibon.jpg',
+ sanibon:{slug:'sanibon',name:'Sanibon',ar:'سانيبون',tag:'Sanitaires',tagAr:'حمّامات',bg:'#d7dcff',liq:'#f4b9a6',img:IMG+'sanibon.jpg',
   short:'L\'entretien des sanitaires.',shortAr:'العناية بالحمّامات والمراحيض.',
   desc:'Sanibon est le produit d\'entretien dédié aux sanitaires, disponible en trois senteurs : Opilum, La Blanche et Dark Blue.',
   descAr:'سانيبون منتج مخصص للعناية بالحمّامات والمراحيض، متوفر بثلاث روائح: أوبيلوم، لا بلانش ودارك بلو.',
@@ -37,7 +37,7 @@ const PRODUCTS={
   cautions:[['Ne pas mélanger avec de l\'eau de javel ou d\'autres produits.','لا يُخلط بماء جافيل أو بمنتجات أخرى.'],['Porter des gants et aérer la pièce.','ارتدوا القفازات وهوّوا المكان.'],['Tenir hors de portée des enfants.','يُحفظ بعيدا عن متناول الأطفال.']],
   facts:[['3 senteurs','3 روائح'],['Sanitaires','حمّامات']],
   variants:[{n:'Opilum',nAr:'أوبيلوم',c:'#f4b9a6',bg:'#ffd9cc'},{n:'La Blanche',nAr:'لا بلانش',c:'#ffffff',bg:'#ececf5'},{n:'Dark Blue',nAr:'دارك بلو',c:'#6fc3ee',bg:'#cdeaff'}],cat:'Sanitaires'},
- blanche:{slug:'blanche',name:'Parfumant multi-usages La Blanche',ar:'معطّر متعدد الاستعمالات «لا بلانش»',tag:'Nouveau',tagAr:'جديد',bg:'#e9eeff',img:IMG+'lave_sol.jpg',isNew:true,
+ blanche:{slug:'blanche',name:'Parfumant multi-usages La Blanche',ar:'معطّر متعدد الاستعمالات «لا بلانش»',tag:'Nouveau',tagAr:'جديد',bg:'#e9eeff',liq:'#ffffff',img:IMG+'lave_sol.jpg',isNew:true,
   short:'Senteur fleurs blanches, format 1 L.',shortAr:'برائحة الزهور البيضاء، عبوة 1 لتر.',
   desc:'Le nouveau parfumant multi-usages La Blanche diffuse une senteur de fleurs blanches pour accompagner l\'entretien de la maison.',
   descAr:'المعطّر الجديد متعدد الاستعمالات «لا بلانش» ينشر رائحة الزهور البيضاء ليرافق العناية بالبيت.',
@@ -47,3 +47,6 @@ const PRODUCTS={
 };
 const ORDER=['vaisselle','lessive','javel','lavesol','sanibon','blanche'];
 const WILAYAS=['Adrar','Chlef','Laghouat','Oum El Bouaghi','Batna','Béjaïa','Biskra','Béchar','Blida','Bouira','Tamanrasset','Tébessa','Tlemcen','Tiaret','Tizi Ouzou','Alger','Djelfa','Jijel','Sétif','Saïda','Skikda','Sidi Bel Abbès','Annaba','Guelma','Constantine','Médéa','Mostaganem','M\'Sila','Mascara','Ouargla','Oran','El Bayadh','Illizi','Bordj Bou Arréridj','Boumerdès','El Tarf','Tindouf','Tissemsilt','El Oued','Khenchela','Souk Ahras','Tipaza','Mila','Aïn Defla','Naâma','Aïn Témouchent','Ghardaïa','Relizane','Timimoun','Bordj Badji Mokhtar','Ouled Djellal','Béni Abbès','In Salah','In Guezzam','Touggourt','Djanet','El M\'Ghair','El Meniaa'];
+
+const WILAYAS_AR=['أدرار','الشلف','الأغواط','أم البواقي','باتنة','بجاية','بسكرة','بشار','البليدة','البويرة','تمنراست','تبسة','تلمسان','تيارت','تيزي وزو','الجزائر','الجلفة','جيجل','سطيف','سعيدة','سكيكدة','سيدي بلعباس','عنابة','قالمة','قسنطينة','المدية','مستغانم','المسيلة','معسكر','ورقلة','وهران','البيض','إليزي','برج بوعريريج','بومرداس','الطارف','تندوف','تيسمسيلت','الوادي','خنشلة','سوق أهراس','تيبازة','ميلة','عين الدفلى','النعامة','عين تموشنت','غرداية','غليزان','تيميمون','برج باجي مختار','أولاد جلال','بني عباس','عين صالح','عين قزام','تقرت','جانت','المغير','المنيعة'];
+const CATS=[['all','Tous','الكل'],['Cuisine','Cuisine','مطبخ'],['Linge','Linge','ملابس'],['Sols','Sols','أرضيات'],['Sanitaires','Sanitaires','حمّامات'],['Désinfection','Désinfection','تعقيم'],['Parfum','Parfum','عطر']];
