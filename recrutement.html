@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
-<title>Recrutement — Lina Clean</title>
+<title data-ar="التوظيف — لينا كلين">Recrutement — Lina Clean</title>
 <meta name="description" content="Rejoignez l'équipe Lina Clean : découvrez les profils recherchés et postulez en ligne.">
 </head><body>
 <div id="hdr"></div>
@@ -51,13 +51,13 @@
 <section id="candidature"><div class="wrap">
  <h2 class="rv" data-ar="أرسلوا <em>ترشّحكم.</em>">Envoyez votre<br><em>candidature.</em></h2>
  <form class="f" id="cf" style="margin-top:40px">
-  <input placeholder="Prénom" required><input placeholder="Nom" required>
-  <input type="tel" placeholder="Téléphone" required><input type="email" placeholder="Email" required>
-  <select id="wil" required><option value="">Wilaya</option></select>
-  <select id="poste" required><option value="">Poste souhaité</option></select>
-  <select class="full"><option value="">Niveau d'études</option><option>Sans diplôme</option><option>Formation professionnelle / TS</option><option>Licence</option><option>Master / Ingénieur</option><option>Doctorat</option></select>
+  <input placeholder="Prénom" data-ar-ph="الاسم" required><input placeholder="Nom" data-ar-ph="اللقب" required>
+  <input type="tel" placeholder="Téléphone" data-ar-ph="الهاتف" required><input type="email" placeholder="Email" data-ar-ph="البريد الإلكتروني" required>
+  <select id="wil" required><option value="" data-ar="الولاية">Wilaya</option></select>
+  <select id="poste" required><option value="" data-ar="المنصب المرغوب">Poste souhaité</option></select>
+  <select class="full"><option value="" data-ar="المستوى الدراسي">Niveau d'études</option><option data-ar="بدون شهادة">Sans diplôme</option><option data-ar="تكوين مهني / تقني سامي">Formation professionnelle / TS</option><option data-ar="ليسانس">Licence</option><option data-ar="ماستر / مهندس">Master / Ingénieur</option><option data-ar="دكتوراه">Doctorat</option></select>
   <label class="filebox full"><input type="file" id="cv" accept=".pdf,.doc,.docx"><span id="fn" data-ar="📎 أرفقوا سيرتكم الذاتية (PDF / Word)">📎 Joindre votre CV (PDF / Word)</span></label>
-  <textarea class="full" placeholder="Quelques mots sur vous (facultatif)"></textarea>
+  <textarea class="full" placeholder="Quelques mots sur vous (facultatif)" data-ar-ph="بضع كلمات عنكم (اختياري)"></textarea>
   <label class="chk full"><input type="checkbox" required><span data-ar="أوافق على معالجة بياناتي لأغراض التوظيف.">J'accepte que mes données soient traitées pour ma candidature.</span></label>
   <button class="pill dark" type="submit" data-ar="إرسال الترشّح →">Envoyer ma candidature →</button>
  </form>
@@ -66,13 +66,13 @@
 <div id="ftr"></div>
 <script src="data.js"></script><script src="app.js"></script>
 <script>
-document.getElementById('wil').innerHTML+=WILAYAS.map((w,i)=>'<option>'+String(i+1).padStart(2,'0')+' — '+w+'</option>').join('');
-const ps=[...document.querySelectorAll('.job')].map(j=>j.querySelector('h3').dataset.fr||j.querySelector('h3').textContent);
-document.getElementById('poste').innerHTML+=ps.map(t=>'<option>'+t+'</option>').join('')+'<option>Candidature spontanée</option>';
+document.getElementById('wil').innerHTML+=wilayaOpts();
+const ps=[...document.querySelectorAll('.job')].map(j=>{const h=j.querySelector('h3');return [h.dataset.fr||h.textContent,h.dataset.ar]});
+document.getElementById('poste').innerHTML+=ps.map(t=>opt(t[0],t[1])).join('')+opt('Candidature spontanée','ترشّح تلقائي');
 document.querySelectorAll('#jf button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('#jf button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
  document.querySelectorAll('.job').forEach(j=>j.classList.toggle('hide',b.dataset.f!=='all'&&j.dataset.c!==b.dataset.f))});
-document.querySelectorAll('[data-job]').forEach(b=>b.onclick=()=>{const s=document.getElementById('poste');[...s.options].forEach(o=>{if(o.text===b.dataset.job)s.value=o.text});document.getElementById('candidature').scrollIntoView({behavior:'smooth'})});
+document.querySelectorAll('[data-job]').forEach(b=>b.onclick=()=>{const s=document.getElementById('poste');[...s.options].forEach(o=>{if(o.dataset.fr===b.dataset.job||o.text===b.dataset.job)o.selected=true});document.getElementById('candidature').scrollIntoView({behavior:'smooth'})});
 document.getElementById('cv').onchange=e=>{if(e.target.files[0])document.getElementById('fn').textContent='✅ '+e.target.files[0].name};
 document.getElementById('cf').onsubmit=e=>{e.preventDefault();okForm(e.target,'Candidature envoyée. Merci !','تم إرسال ترشّحكم. شكرا!')};
 App.refresh();
