@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lina Clean — Le propre, en grand</title>
+<meta name="description" content="Lina Clean : vaisselle, lessive, javel, sols, sanitaires. Le propre, en grand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@700;900&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#fff4ef;--red:#e6003c;--ink:#160f14;--pink:#ffd3de;--mint:#d4f0e2;--sun:#ffe27a;--f:'Bricolage Grotesque',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--f);background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}a{color:inherit;text-decoration:none}
+.pad{padding:0 clamp(20px,4vw,56px)}
+header{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:60;width:min(960px,calc(100% - 28px));display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 22px;background:rgba(255,255,255,.8);backdrop-filter:blur(14px);border-radius:999px;box-shadow:0 10px 40px -12px rgba(230,0,60,.25)}
+header img{height:28px}
+header nav{display:flex;gap:28px;font-size:14px;font-weight:600}
+header nav a:hover{color:var(--red)}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;transition:.3s;border:0;cursor:pointer;font-family:inherit}
+.pill:hover{transform:translateY(-2px) scale(1.03);background:var(--ink)}
+.pill.dark{background:var(--ink)}.pill.dark:hover{background:var(--red)}
+.hero{min-height:100svh;padding-top:130px;position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+.hero h1{font-size:clamp(56px,13vw,210px);line-height:.86;font-weight:800;letter-spacing:-.045em}
+.hero h1 span{color:var(--red)}
+.hero h1 .o{display:inline-block;width:.68em;height:.68em;border-radius:50%;background:var(--pink);vertical-align:-.02em;margin:0 .04em;overflow:hidden}
+.hero .row{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-top:38px;flex-wrap:wrap}
+.hero p{max-width:400px;font-size:19px;line-height:1.45}
+.ar{font-family:'Cairo',sans-serif;font-weight:900;direction:rtl;font-size:clamp(26px,3.4vw,44px);color:var(--red);line-height:1.3}
+.float{position:absolute;pointer-events:none;filter:drop-shadow(0 30px 30px rgba(0,0,0,.18));animation:fl 6s ease-in-out infinite}
+.float.f1{right:6%;top:15%;width:clamp(150px,20vw,290px);transform:rotate(9deg)}
+.float.f2{right:24%;top:46%;width:clamp(100px,12vw,180px);transform:rotate(-12deg);animation-delay:-2s}
+.float img{width:100%;border-radius:22px}
+@keyframes fl{50%{translate:0 -18px}}
+.marq{background:var(--red);color:#fff;overflow:hidden;white-space:nowrap;padding:18px 0;transform:rotate(-1.4deg);margin:-10px -20px 0;position:relative;z-index:3}
+.marq div{display:inline-block;font-size:clamp(24px,3.6vw,44px);font-weight:800;letter-spacing:-.02em;animation:mq 26s linear infinite}
+.marq span{margin:0 26px;opacity:.55}
+@keyframes mq{to{transform:translateX(-50%)}}
+section{padding:clamp(80px,11vw,150px) 0}
+h2{font-size:clamp(40px,7vw,104px);line-height:.92;font-weight:800;letter-spacing:-.04em}
+h2 em{font-style:normal;color:var(--red)}
+.bento{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin-top:56px}
+.tile{border-radius:30px;padding:28px;position:relative;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:space-between;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tile:hover{transform:translateY(-8px) rotate(-.6deg)}
+.tile h3{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-.03em;line-height:1;position:relative;z-index:2}
+.tile p{font-size:15px;max-width:230px;position:relative;z-index:2;margin-top:10px}
+.tile .tag{align-self:flex-start;background:rgba(255,255,255,.75);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:600;position:relative;z-index:2}
+.tile img{position:absolute;right:-4%;bottom:-3%;height:88%;width:58%;object-fit:contain;transition:transform .6s cubic-bezier(.2,.8,.2,1);mix-blend-mode:multiply}
+.tile:hover img{transform:scale(1.1) rotate(4deg)}
+.t1{grid-column:span 7;background:var(--pink)}
+.t2{grid-column:span 5;background:var(--sun)}
+.t3{grid-column:span 4;background:var(--mint)}
+.t4{grid-column:span 4;background:#ffc9b8}
+.t5{grid-column:span 4;background:#d7dcff}
+.t6{grid-column:span 12;background:var(--ink);color:#fff;min-height:300px;flex-direction:row;align-items:center;gap:30px;flex-wrap:wrap}
+.t6 .ar{font-size:clamp(30px,5vw,72px);color:#fff}.t6 .ar b{color:var(--red)}
+.t6 .badge{background:var(--red);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:600;display:inline-block;margin-bottom:14px}
+.t6 h3{max-width:560px}
+.about{background:var(--ink);color:#fff;border-radius:48px 48px 0 0;margin-top:-1px}
+.about .g{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.about p{font-size:20px;line-height:1.5;color:#e3d9de;margin-top:30px;max-width:520px}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.chips span{border:1.5px solid #ffffff44;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600}
+.pic{border-radius:36px;overflow:hidden;aspect-ratio:4/5;position:relative}
+.pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
+.pic:hover img{transform:scale(1.07)}
+.pic b{position:absolute;left:18px;bottom:18px;background:var(--red);border-radius:999px;padding:10px 18px;font-size:13px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.pl{border:2px solid var(--ink);border-radius:30px;padding:30px;transition:.4s}
+.pl:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-6px)}
+.pl i{font-style:normal;font-size:64px;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--red);transition:.4s}
+.pl:hover i{color:#fff}
+.pl h3{font-size:30px;margin:26px 0 8px;font-weight:800;letter-spacing:-.02em}
+.cta{background:var(--red);color:#fff;border-radius:48px;margin:0 clamp(12px,2vw,24px) 24px;padding:clamp(50px,8vw,110px) clamp(24px,5vw,80px);position:relative;overflow:hidden}
+.cta h2{max-width:900px}
+.cta form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:50px;max-width:800px}
+.cta input,.cta textarea{padding:18px 22px;border-radius:20px;border:0;font:inherit;background:#fff;color:var(--ink);outline:none;width:100%}
+.cta textarea{grid-column:span 2;min-height:120px;resize:vertical}
+.cta .pill{background:var(--ink);justify-self:start;padding:16px 30px;font-size:16px}
+.cta .pill:hover{background:#fff;color:var(--red)}
+footer{padding:30px 0 40px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;font-size:14px}
+footer img{height:26px}
+.rv{opacity:0;transform:translateY(40px) scale(.98);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(max-width:900px){header nav{display:none}.t1,.t2,.t3,.t4,.t5{grid-column:span 12}.about .g{grid-template-columns:1fr}.pillars{grid-template-columns:1fr}.float.f2{display:none}.float.f1{opacity:.35;right:-4%}.cta form{grid-template-columns:1fr}.cta textarea{grid-column:auto}}
+</style>
+</head>
+<body>
+<header><a href="#top"><img src="https://lina-clean.com/images/logo.png" alt="Lina Clean"></a>
+<nav><a href="#gamme">Produits</a><a href="#marque">La marque</a><a href="#promesse">Promesse</a></nav>
+<a class="pill" href="#contact">Contact →</a></header>
+
+<main id="top">
+<div class="hero pad">
+<div class="float f1"><img src="https://lina-clean.com/images/lessive.jpg" alt=""></div>
+<div class="float f2"><img src="https://lina-clean.com/images/javel.jpg" alt=""></div>
+<h1>Le propre,<br><span>en gr<i class="o"></i>nd.</span></h1>
+<div class="row">
+<p>Vaisselle, linge, sols, sanitaires. Des solutions de nettoyage performantes pour la maison et les pros.</p>
+<div class="ar">اللمسة الأخيرة<br>قبل ما يجو الضياف</div>
+<a class="pill" href="#gamme">Voir la gamme ↓</a>
+</div>
+</div>
+
+<div class="marq"><div id="mq"></div></div>
+
+<section id="gamme" class="pad">
+<h2 class="rv">Cinq héros.<br><em>Zéro</em> compromis.</h2>
+<div class="bento">
+<a class="tile t1 rv" href="#contact"><span class="tag">Cuisine</span><div><h3>Liquide<br>vaisselle</h3><p>Nette, brillante, au quotidien.</p></div><img src="https://lina-clean.com/images/liquide_vaisselle.jpg" alt="Liquide vaisselle" loading="lazy"></a>
+<a class="tile t2 rv" href="#contact"><span class="tag">Linge</span><div><h3>Liquide<br>lessive</h3><p>Le soin du linge.</p></div><img src="https://lina-clean.com/images/lessive.jpg" alt="Liquide lessive" loading="lazy"></a>
+<a class="tile t3 rv" href="#contact"><span class="tag">Désinfection</span><div><h3>Eau de<br>javel</h3><p>Hygiène rigoureuse.</p></div><img src="https://lina-clean.com/images/javel.jpg" alt="Eau de javel" loading="lazy"></a>
+<a class="tile t4 rv" href="#contact"><span class="tag">Sols</span><div><h3>Lave<br>sol</h3><p>Des sols impeccables.</p></div><img src="https://lina-clean.com/images/lave_sol.jpg" alt="Lave sol" loading="lazy"></a>
+<a class="tile t5 rv" href="#contact"><span class="tag">Sanitaires</span><div><h3>Sani<br>bon</h3><p>L'entretien sanitaire.</p></div><img src="https://lina-clean.com/images/sanibon.jpg" alt="Sanibon" loading="lazy"></a>
+<div class="tile t6 rv"><div><span class="badge">Nouveau · La Blanche</span><h3>Parfumant multi-usages, senteur fleurs blanches.</h3></div><div class="ar">خلي الريحة الزينة<br><b>تكمّل النظافة</b></div></div>
+</div>
+</section>
+
+<section id="marque" class="about pad"><div class="g">
+<div class="rv"><h2>Une marque,<br>une <em>obsession</em> :<br>l'hygiène.</h2>
+<p>Lina Clean formule et distribue des produits détergents et des solutions de nettoyage, pour une hygiène optimale et durable.</p>
+<div class="chips"><span>Testés &amp; approuvés</span><span>Usage domestique</span><span>Usage professionnel</span><span>Efficaces &amp; sûrs</span></div></div>
+<div class="pic rv"><img src="https://lina-clean.com/images/usine.jpg" alt="Production Lina Clean"><b>Notre site de production</b></div>
+</div></section>
+
+<section id="promesse" class="pad" style="background:var(--cream)">
+<h2 class="rv">La promesse<br>en <em>trois</em> mots.</h2>
+<div class="pillars">
+<div class="pl rv"><i>01</i><h3>Efficacité</h3><p>Un résultat visible dès la première utilisation.</p></div>
+<div class="pl rv"><i>02</i><h3>Sécurité</h3><p>Des produits sûrs, à la maison comme au travail.</p></div>
+<div class="pl rv"><i>03</i><h3>Qualité</h3><p>Une qualité régulière sur toute la gamme.</p></div>
+</div></section>
+
+<div class="cta rv" id="contact">
+<h2>On <span style="color:var(--ink)">fait connaissance</span> ?</h2>
+<p style="margin-top:22px;font-size:19px;max-width:520px">Une question sur nos produits ou un projet de partenariat ? Écrivez-nous.</p>
+<form onsubmit="event.preventDefault();this.querySelector('button').textContent='Merci, c\'est envoyé ✓'">
+<input placeholder="Nom" required><input placeholder="Société">
+<input type="email" placeholder="Email" required><input type="tel" placeholder="Téléphone">
+<textarea placeholder="Votre message"></textarea>
+<button class="pill" type="submit">Envoyer →</button>
+</form></div>
+</main>
+<footer class="pad"><img src="https://lina-clean.com/images/logo.png" alt="Lina Clean"><span>© Lina Clean. Tous droits réservés.</span><a href="../corporate/">Voir la version corporate →</a></footer>
+<script>
+const words=['Vaisselle','Lessive','Javel','Lave sol','Sanibon','La Blanche'];
+const h=words.map(w=>w+'<span>✦</span>').join('');
+document.getElementById('mq').innerHTML=h+h+h+h;
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*80+'ms';io.observe(el)});
+</script>
+</body>
+</html>
