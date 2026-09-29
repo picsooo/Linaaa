@@ -1,182 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
 <title>Lina Clean — Le propre, en grand</title>
-<meta name="description" content="Lina Clean : liquide vaisselle, lessive, javel, lave sol, Sanibon. Solutions de nettoyage pour particuliers et professionnels.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
-<style>
-:root{--cream:#fff4ef;--red:#e6003c;--ink:#160f14;--pink:#ffd3de;--mint:#d4f0e2;--sun:#ffe27a;--peach:#ffc9b8;--lav:#d7dcff;--f:'Bricolage Grotesque',system-ui,sans-serif}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;overflow-x:clip}
-body{font-family:var(--f);background:var(--cream);color:var(--ink);overflow-x:clip;-webkit-font-smoothing:antialiased;line-height:1.4}
-html[lang=ar] body{font-family:'Cairo',var(--f)}
-img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{font-family:inherit}
-.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(18px,4vw,48px)}
-section{padding-block:clamp(64px,9vw,120px)}
-h2{font-size:clamp(38px,6.4vw,92px);line-height:.95;font-weight:800;letter-spacing:-.04em}
-html[lang=ar] h2,html[lang=ar] h1,html[lang=ar] h3{letter-spacing:0;line-height:1.2}
-h2 em{font-style:normal;color:var(--red)}
-.ar{font-family:'Cairo',sans-serif;font-weight:900;direction:rtl;color:var(--red);line-height:1.3;font-size:clamp(26px,3.4vw,46px)}
-.pill{display:inline-flex;align-items:center;gap:8px;background:var(--red);color:#fff;padding:13px 24px;border-radius:999px;font-weight:600;font-size:15px;transition:.3s;border:0;cursor:pointer;white-space:nowrap}
-.pill:hover{transform:translateY(-2px);background:var(--ink)}
-.pill.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
-.pill.ghost:hover{background:var(--ink);color:#fff}
-
-/* header */
-header{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:60;width:min(980px,calc(100% - 24px));display:flex;align-items:center;justify-content:space-between;gap:12px;padding:9px 10px 9px 22px;background:rgba(255,255,255,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-radius:999px;box-shadow:0 10px 40px -14px rgba(230,0,60,.35)}
-html[dir=rtl] header{padding:9px 22px 9px 10px}
-header .logo img{height:28px}
-header nav{display:flex;gap:26px;font-size:14px;font-weight:600}
-header nav a:hover{color:var(--red)}
-.hr{display:flex;align-items:center;gap:8px}
-.lang{background:transparent;border:2px solid var(--ink);border-radius:999px;padding:8px 14px;font-weight:800;font-size:13px;cursor:pointer;font-family:'Cairo',sans-serif}
-.lang:hover{background:var(--ink);color:#fff}
-.burger{display:none;width:42px;height:42px;border-radius:50%;border:0;background:var(--ink);color:#fff;font-size:18px;cursor:pointer}
-.menu{position:fixed;inset:0;z-index:55;background:var(--ink);color:#fff;display:none;flex-direction:column;justify-content:center;gap:10px;padding:0 32px}
-.menu.open{display:flex}
-.menu a{font-size:clamp(38px,11vw,64px);font-weight:800;letter-spacing:-.03em}
-.menu a:hover{color:var(--red)}
-
-/* hero */
-.hero{padding-top:118px;padding-bottom:0;position:relative}
-.hero h1{font-size:clamp(54px,12.5vw,190px);line-height:.86;font-weight:800;letter-spacing:-.045em}
-.hero h1 span{color:var(--red)}
-.hero h1 .o{display:inline-block;width:.66em;height:.66em;border-radius:50%;background:var(--pink);vertical-align:-.02em;margin:0 .03em}
-.hrow{display:flex;justify-content:space-between;align-items:flex-end;gap:28px;margin-top:34px;flex-wrap:wrap}
-.hrow p{max-width:400px;font-size:19px}
-.hrow .ar{text-align:start}
-.trio{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:14px;margin-top:48px;align-items:end}
-.trio figure{border-radius:28px;overflow:hidden;background:#fff;aspect-ratio:3/4;box-shadow:0 30px 50px -30px rgba(22,15,20,.35)}
-.trio figure:nth-child(2){aspect-ratio:3/4.4}
-.trio img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
-.trio figure:hover img{transform:scale(1.06)}
-
-/* bands */
-.bands{overflow:hidden;padding:34px 0;margin-top:-20px}
-.bands .in{margin:0 -6%;transform:rotate(-1.6deg)}
-.band{overflow:hidden;white-space:nowrap;padding:14px 0;background:var(--red);color:#fff}
-.band.dark{background:var(--ink);transform:none}
-.band div{display:inline-block;font-weight:800;letter-spacing:-.02em;font-size:clamp(24px,3.6vw,44px);animation:mq 30s linear infinite}
-.band.dark div{animation-direction:reverse;font-family:'Cairo',sans-serif;font-weight:900;letter-spacing:0;animation-duration:38s}
-.band span{margin:0 24px;opacity:.5}
-@keyframes mq{to{transform:translateX(-50%)}}
-
-/* gamme */
-.head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
-.head p{max-width:340px;font-size:17px}
-.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;margin-top:48px}
-.tile{grid-column:span 2;background:var(--bg);border-radius:30px;padding:14px 14px 26px;display:flex;flex-direction:column;transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s}
-.tile:nth-child(-n+2){grid-column:span 3}
-.tile:hover{transform:translateY(-8px);box-shadow:0 30px 40px -28px rgba(22,15,20,.4)}
-.tile .ph{border-radius:20px;overflow:hidden;aspect-ratio:4/3;background:#fff}
-.tile:nth-child(-n+2) .ph{aspect-ratio:16/10}
-.tile .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.tile:hover .ph img{transform:scale(1.07)}
-.tile .meta{padding:20px 12px 0;display:flex;flex-direction:column;gap:8px;flex:1}
-.tag{align-self:flex-start;background:rgba(255,255,255,.8);border-radius:999px;padding:5px 13px;font-size:12px;font-weight:600}
-.tile h3{font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-.03em;line-height:1}
-.tile p{font-size:15px;max-width:300px}
-.go{margin-top:auto;padding-top:14px;font-weight:700;font-size:14px}
-.go::after{content:" →";transition:.3s;display:inline-block}
-.tile:hover .go::after{transform:translateX(6px)}
-html[dir=rtl] .go::after{content:" ←"}
-.tile.new{grid-column:span 6;background:var(--ink);color:#fff;flex-direction:row;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;padding:clamp(28px,4vw,56px)}
-.tile.new .badge{background:var(--red);border-radius:999px;padding:7px 16px;font-size:13px;font-weight:600;display:inline-block;margin-bottom:16px}
-.tile.new h3{max-width:560px;font-size:clamp(30px,4vw,56px)}
-.tile.new .ar{color:#fff;font-size:clamp(30px,5vw,68px)}.tile.new .ar b{color:var(--red)}
-
-/* parfums */
-.perf{background:#fff;border-radius:48px;margin-inline:clamp(10px,2vw,24px)}
-.pcards{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
-.pc{border:2px solid var(--ink);border-radius:30px;padding:30px}
-.pc h3{font-size:clamp(28px,3vw,40px);font-weight:800;letter-spacing:-.03em}
-.pc p{margin-top:6px;font-size:15px}
-.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-.chip{display:inline-flex;align-items:center;gap:10px;border:2px solid var(--ink);border-radius:999px;padding:9px 18px 9px 10px;font-weight:600;font-size:15px}
-html[dir=rtl] .chip{padding:9px 10px 9px 18px}
-.chip i{width:22px;height:22px;border-radius:50%;background:var(--c);border:1.5px solid rgba(22,15,20,.25)}
-.dots{display:flex;gap:10px;margin-top:22px}
-.dots i{width:clamp(34px,6vw,54px);height:clamp(34px,6vw,54px);border-radius:50%;background:var(--c);border:1.5px solid rgba(22,15,20,.2);transition:.3s}
-.dots i:hover{transform:translateY(-6px)}
-
-/* marque */
-.about{background:var(--ink);color:#fff;border-radius:48px 48px 0 0;margin-top:clamp(40px,6vw,80px)}
-.about .g{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,5vw,70px);align-items:center}
-.about p{font-size:20px;line-height:1.5;color:#e3d9de;margin-top:28px;max-width:520px}
-.achips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.achips span{border:1.5px solid #ffffff44;border-radius:999px;padding:10px 18px;font-size:14px;font-weight:600}
-.pic{border-radius:36px;overflow:hidden;aspect-ratio:4/5}
-.pic img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s}
-.pic:hover img{transform:scale(1.06)}
-
-/* pour qui + promesse */
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
-.pl{border:2px solid var(--ink);border-radius:30px;padding:30px;transition:.4s;background:transparent}
-.pl:hover{background:var(--red);color:#fff;border-color:var(--red);transform:translateY(-6px)}
-.pl i{font-style:normal;font-size:60px;font-weight:800;letter-spacing:-.05em;line-height:1;color:var(--red);transition:.4s;display:block}
-.pl:hover i{color:#fff}
-.pl h3{font-size:28px;margin:22px 0 8px;font-weight:800;letter-spacing:-.02em}
-.pl p{font-size:16px}
-
-/* contact */
-.cta{background:var(--red);color:#fff;border-radius:48px;margin:0 clamp(10px,2vw,24px) 24px;padding:clamp(44px,7vw,100px) clamp(22px,5vw,80px)}
-.cta h2 span{color:var(--ink)}
-.cta .sub{margin-top:20px;font-size:19px;max-width:520px}
-.cta form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:44px;max-width:820px}
-.cta input,.cta textarea,.cta select{padding:17px 22px;border-radius:20px;border:0;font:inherit;background:#fff;color:var(--ink);outline:none;width:100%}
-.cta textarea{grid-column:span 2;min-height:120px;resize:vertical}
-.cta select{grid-column:span 2}
-.cta .pill{background:var(--ink);justify-self:start;padding:16px 32px;font-size:16px}
-.cta .pill:hover{background:#fff;color:var(--red)}
-footer{padding:30px 0 44px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center;font-size:14px}
-footer img{height:26px}
-
-.js .rv{opacity:0;transform:translateY(36px);transition:opacity .8s,transform .8s cubic-bezier(.2,.8,.2,1)}
-.js .rv.in{opacity:1;transform:none}
-
-@media(max-width:900px){
- header nav{display:none}.burger{display:inline-block}
- .grid{grid-template-columns:1fr 1fr}.tile,.tile:nth-child(-n+2){grid-column:span 1}.tile:nth-child(-n+2) .ph{aspect-ratio:4/3}.tile.new{grid-column:span 2}
- .pcards,.pillars,.about .g{grid-template-columns:1fr}
- .cta form{grid-template-columns:1fr}.cta textarea,.cta select{grid-column:auto}
- .trio{gap:8px}.trio figure{border-radius:18px}
-}
-@media(max-width:560px){
- .grid{grid-template-columns:1fr}.tile.new{grid-column:span 1}
- .hrow p{font-size:17px}
- .pill{padding:12px 20px;font-size:14px}
- header{padding:8px 8px 8px 18px}
-}
-</style>
-</head>
-<body>
-<header>
- <a class="logo" href="#top"><img src="https://lina-clean.com/images/logo.png" alt="Lina Clean"></a>
- <nav>
-  <a href="#gamme" data-ar="المنتجات">Produits</a>
-  <a href="#parfums" data-ar="العطور">Parfums</a>
-  <a href="#marque" data-ar="العلامة">La marque</a>
-  <a href="#promesse" data-ar="التزاماتنا">Engagements</a>
- </nav>
- <div class="hr">
-  <button class="lang" id="lang" aria-label="Langue">عربي</button>
-  <a class="pill" href="#contact" data-ar="اتصل بنا">Contact →</a>
-  <button class="burger" id="burger" aria-label="Menu">☰</button>
- </div>
-</header>
-<div class="menu" id="menu">
- <a href="#gamme" data-ar="المنتجات">Produits</a>
- <a href="#parfums" data-ar="العطور">Parfums</a>
- <a href="#marque" data-ar="العلامة">La marque</a>
- <a href="#promesse" data-ar="التزاماتنا">Engagements</a>
- <a href="#contact" data-ar="اتصل بنا" style="color:var(--red)">Contact</a>
-</div>
-
+<meta name="description" content="Lina Clean : liquide vaisselle, lessive, javel, lave sol, Sanibon. Fiches techniques, espace revendeurs et recrutement.">
+</head><body>
+<div id="hdr"></div>
 <main id="top">
+<section class="hero-s" style="padding-bottom:0"><div class="bubbles" data-n="16"></div>
 <div class="wrap hero">
  <h1 data-ar="النظافة<br><span>في أبهى حلّة.</span>">Le propre,<br><span>en gr<i class="o"></i>nd.</span></h1>
  <div class="hrow">
@@ -189,7 +18,7 @@ footer img{height:26px}
   <figure><img src="https://lina-clean.com/images/lessive.jpg" alt="Liquide lessive Lina Clean"></figure>
   <figure><img src="https://lina-clean.com/images/sanibon.jpg" alt="Sanibon"></figure>
  </div>
-</div>
+</div></section>
 
 <div class="bands" aria-hidden="true"><div class="in">
  <div class="band"><div class="mq" data-w="Vaisselle|Lessive|Javel|Lave sol|Sanibon|La Blanche"></div></div>
@@ -199,25 +28,38 @@ footer img{height:26px}
 <section id="gamme"><div class="wrap">
  <div class="head rv">
   <h2 data-ar="خمسة منتجات.<br><em>بلا</em> تنازل.">Cinq héros.<br><em>Zéro</em> compromis.</h2>
-  <p data-ar="من المطبخ إلى الحمّام: كل ما يلزم لنظافة البيت.">De la cuisine à la salle de bain : tout pour un intérieur impeccable.</p>
+  <p data-ar="اضغطوا على أي منتج لاكتشاف الفيش التقني المفصّل، طريقة الاستعمال وإرشادات الأمان.">Cliquez sur un produit pour découvrir sa fiche technique détaillée, son mode d'emploi et ses précautions.</p>
  </div>
  <div class="grid">
-  <a class="tile rv" style="--bg:var(--pink)" href="#contact" data-p="Liquide vaisselle"><div class="ph"><img src="https://lina-clean.com/images/liquide_vaisselle.jpg" alt="Liquide vaisselle" loading="lazy"></div><div class="meta"><span class="tag" data-ar="مطبخ">Cuisine</span><h3 data-ar="سائل غسيل الأواني">Liquide vaisselle</h3><p data-ar="أواني نظيفة ولامعة كل يوم.">Nette, brillante, au quotidien.</p><span class="go" data-ar="اطلب السعر">Demander un tarif</span></div></a>
-  <a class="tile rv" style="--bg:var(--sun)" href="#contact" data-p="Liquide lessive"><div class="ph"><img src="https://lina-clean.com/images/lessive.jpg" alt="Liquide lessive" loading="lazy"></div><div class="meta"><span class="tag" data-ar="ملابس">Linge</span><h3 data-ar="سائل غسيل الملابس">Liquide lessive</h3><p data-ar="عناية بالملابس بكل لطف.">Le soin du linge, tout en douceur.</p><span class="go" data-ar="اطلب السعر">Demander un tarif</span></div></a>
-  <a class="tile rv" style="--bg:var(--mint)" href="#contact" data-p="Eau de javel"><div class="ph"><img src="https://lina-clean.com/images/javel.jpg" alt="Eau de javel" loading="lazy"></div><div class="meta"><span class="tag" data-ar="تعقيم">Désinfection</span><h3 data-ar="ماء جافيل">Eau de javel</h3><p data-ar="نظافة صارمة في كل ركن.">Une hygiène rigoureuse.</p><span class="go" data-ar="اطلب السعر">Demander un tarif</span></div></a>
-  <a class="tile rv" style="--bg:var(--peach)" href="#contact" data-p="Lave sol"><div class="ph"><img src="https://lina-clean.com/images/lave_sol.jpg" alt="Lave sol" loading="lazy"></div><div class="meta"><span class="tag" data-ar="أرضيات">Sols</span><h3 data-ar="منظّف الأرضيات">Lave sol</h3><p data-ar="أرضيات نظيفة ومعطّرة.">Des sols impeccables.</p><span class="go" data-ar="اطلب السعر">Demander un tarif</span></div></a>
-  <a class="tile rv" style="--bg:var(--lav)" href="#contact" data-p="Sanibon"><div class="ph"><img src="https://lina-clean.com/images/sanibon.jpg" alt="Sanibon" loading="lazy"></div><div class="meta"><span class="tag" data-ar="حمّامات">Sanitaires</span><h3>Sanibon</h3><p data-ar="العناية بالحمّامات والمراحيض.">L'entretien des sanitaires.</p><span class="go" data-ar="اطلب السعر">Demander un tarif</span></div></a>
-  <a class="tile new rv" href="#contact" data-p="Parfumant multi-usages La Blanche"><div><span class="badge" data-ar="جديد · لا بلانش">Nouveau · La Blanche</span><h3 data-ar="معطّر متعدد الاستعمالات برائحة الزهور البيضاء.">Parfumant multi-usages, senteur fleurs blanches.</h3></div><div class="ar">خلي الريحة الزينة<br><b>تكمّل النظافة</b></div></a>
+  <a class="tile rv" style="--bg:var(--pink)" href="produit.html?p=vaisselle"><div class="ph"><img src="https://lina-clean.com/images/liquide_vaisselle.jpg" alt="Liquide vaisselle" loading="lazy"><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></div><div class="meta"><span class="tag" data-ar="مطبخ">Cuisine</span><h3 data-ar="سائل غسيل الأواني">Liquide vaisselle</h3><p data-ar="أواني نظيفة ولامعة كل يوم.">Nette, brillante, au quotidien.</p><span class="go" data-ar="الفيش التقني المفصّل">Fiche technique détaillée</span></div></a>
+  <a class="tile rv" style="--bg:var(--sun)" href="produit.html?p=lessive"><div class="ph"><img src="https://lina-clean.com/images/lessive.jpg" alt="Liquide lessive" loading="lazy"><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></div><div class="meta"><span class="tag" data-ar="ملابس">Linge</span><h3 data-ar="سائل غسيل الملابس">Liquide lessive</h3><p data-ar="عناية بالملابس بكل لطف.">Le soin du linge, tout en douceur.</p><span class="go" data-ar="الفيش التقني المفصّل">Fiche technique détaillée</span></div></a>
+  <a class="tile rv" style="--bg:var(--mint)" href="produit.html?p=javel"><div class="ph"><img src="https://lina-clean.com/images/javel.jpg" alt="Eau de javel" loading="lazy"><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></div><div class="meta"><span class="tag" data-ar="تعقيم">Désinfection</span><h3 data-ar="ماء جافيل">Eau de javel</h3><p data-ar="نظافة صارمة في كل ركن.">Une hygiène rigoureuse.</p><span class="go" data-ar="الفيش التقني المفصّل">Fiche technique détaillée</span></div></a>
+  <a class="tile rv" style="--bg:var(--peach)" href="produit.html?p=lavesol"><div class="ph"><img src="https://lina-clean.com/images/lave_sol.jpg" alt="Lave sol" loading="lazy"><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></div><div class="meta"><span class="tag" data-ar="أرضيات">Sols</span><h3 data-ar="منظّف الأرضيات">Lave sol</h3><p data-ar="أرضيات نظيفة ومعطّرة.">Des sols impeccables.</p><span class="go" data-ar="الفيش التقني المفصّل">Fiche technique détaillée</span></div></a>
+  <a class="tile rv" style="--bg:var(--lav)" href="produit.html?p=sanibon"><div class="ph"><img src="https://lina-clean.com/images/sanibon.jpg" alt="Sanibon" loading="lazy"><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></div><div class="meta"><span class="tag" data-ar="حمّامات">Sanitaires</span><h3 data-ar="سانيبون">Sanibon</h3><p data-ar="العناية بالحمّامات والمراحيض.">L'entretien des sanitaires.</p><span class="go" data-ar="الفيش التقني المفصّل">Fiche technique détaillée</span></div></a>
+  <a class="tile new rv" href="produit.html?p=blanche"><div><span class="badge" data-ar="جديد · لا بلانش">Nouveau · La Blanche</span><h3 data-ar="معطّر متعدد الاستعمالات برائحة الزهور البيضاء.">Parfumant multi-usages, senteur fleurs blanches.</h3></div><div class="ar">خلي الريحة الزينة<br><b>تكمّل النظافة</b></div><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></a>
  </div>
+</div></section>
+
+<section id="conseil" class="conseil"><div class="wrap">
+ <h2 class="rv" data-ar="ماذا تريدون <em>تنظيفه؟</em>">Que voulez-vous<br><em>nettoyer</em> ?</h2>
+ <div class="qchips rv" id="qchips">
+  <button data-k="vaisselle" data-ar="🍽️ الأواني">🍽️ La vaisselle</button>
+  <button data-k="lessive" data-ar="👕 الملابس">👕 Le linge</button>
+  <button data-k="lavesol" data-ar="🧽 الأرضيات">🧽 Les sols</button>
+  <button data-k="sanibon" data-ar="🚿 الحمّام">🚿 La salle de bain</button>
+  <button data-k="javel" data-ar="🧴 تعقيم">🧴 Désinfecter</button>
+  <button data-k="blanche" data-ar="🌸 عطر البيت">🌸 Parfumer</button>
+ </div>
+ <div class="qres" id="qres"></div>
 </div></section>
 
 <section id="parfums" class="perf"><div class="wrap">
  <h2 class="rv" data-ar="اختر <em>عطرك.</em>">Choisissez<br>votre <em>parfum.</em></h2>
  <div class="pcards">
-  <div class="pc rv"><h3>Sanibon</h3><p data-ar="ثلاث روائح لنظافة الحمّام.">Trois senteurs pour les sanitaires.</p>
-   <div class="chips"><span class="chip" style="--c:#f4b9a6"><i></i>Opilum</span><span class="chip" style="--c:#ffffff"><i></i>La Blanche</span><span class="chip" style="--c:#6fc3ee"><i></i>Dark Blue</span></div></div>
-  <div class="pc rv"><h3 data-ar="منظّف الأرضيات">Lave sol</h3><p data-ar="خمسة عطور، لكل بيت عطره.">Cinq parfums pour habiller chaque pièce.</p>
-   <div class="dots"><i style="--c:#f0c48f"></i><i style="--c:#9fd88a"></i><i style="--c:#ffffff"></i><i style="--c:#f39ab0"></i><i style="--c:#6fc3ee"></i></div></div>
+  <a class="pc rv" href="produit.html?p=sanibon"><h3>Sanibon</h3><p data-ar="ثلاث روائح لنظافة الحمّام.">Trois senteurs pour les sanitaires.</p>
+   <div class="chips"><span class="chip" style="--c:#f4b9a6"><i></i>Opilum</span><span class="chip" style="--c:#ffffff"><i></i>La Blanche</span><span class="chip" style="--c:#6fc3ee"><i></i>Dark Blue</span></div></a>
+  <a class="pc rv" href="produit.html?p=lavesol"><h3 data-ar="منظّف الأرضيات">Lave sol</h3><p data-ar="خمسة عطور، لكل بيت عطره.">Cinq parfums pour habiller chaque pièce.</p>
+   <div class="dots"><i style="--c:#f0c48f"></i><i style="--c:#9fd88a"></i><i style="--c:#ffffff"></i><i style="--c:#f39ab0"></i><i style="--c:#6fc3ee"></i></div></a>
  </div>
 </div></section>
 
@@ -228,7 +70,15 @@ footer img{height:26px}
  <div class="pic rv"><img src="https://lina-clean.com/images/lessive2.jpg" alt="Gamme Lina Clean" loading="lazy"></div>
 </div></section>
 
-<section id="promesse"><div class="wrap">
+<section id="espaces" style="background:var(--ink);color:#fff;padding-top:0"><div class="wrap">
+ <h2 class="rv" data-ar="فضاءان <em>مخصّصان.</em>">Deux espaces<br><em>dédiés.</em></h2>
+ <div class="duo">
+  <a class="esp red rv" href="revendeurs.html"><span class="big" aria-hidden="true">🏪</span><span class="tagx" data-ar="للتجّار والموزّعين">Grossistes · Détaillants · Pros</span><div><h3 data-ar="فضاء<br>الموزّعين">Espace<br>revendeurs</h3><p data-ar="افتحوا حساب موزّع، حضّروا طلبيتكم بمحاكي الكميات وتلقّوا عرضنا.">Ouvrez un compte revendeur, préparez votre commande avec le simulateur et recevez notre offre.</p><span class="lk"><span data-ar="ادخلوا الفضاء">Accéder à l'espace</span> →</span></div></a>
+  <a class="esp ink rv" href="recrutement.html" style="border:2px solid #ffffff30"><span class="big" aria-hidden="true">🤝</span><span class="tagx" data-ar="نبحث عن مواهب">On recrute</span><div><h3 data-ar="فضاء<br>التوظيف">Espace<br>recrutement</h3><p data-ar="اكتشفوا الملفات التي تهمّنا وأرسلوا ترشّحكم بضغطة واحدة.">Découvrez les profils qui nous intéressent et envoyez votre candidature en quelques clics.</p><span class="lk"><span data-ar="انضمّوا إلينا">Rejoindre l'équipe</span> →</span></div></a>
+ </div>
+</div></section>
+
+<section id="promesse" style="background:var(--ink);color:#fff;padding-top:0"><div class="wrap" style="background:var(--cream);color:var(--ink);border-radius:48px;padding-block:clamp(50px,7vw,90px)">
  <h2 class="rv" data-ar="الوعد في <em>ثلاث</em> كلمات.">La promesse<br>en <em>trois</em> mots.</h2>
  <div class="pillars">
   <div class="pl rv"><i>01</i><h3 data-ar="الفعالية">Efficacité</h3><p data-ar="نتيجة ظاهرة من أول استعمال.">Un résultat visible dès la première utilisation.</p></div>
@@ -237,41 +87,32 @@ footer img{height:26px}
  </div>
 </div></section>
 
-<div class="cta rv" id="contact">
+<div class="cta rv" id="contact" style="margin-top:24px">
  <h2 data-ar="نتعرّف <span>عليكم؟</span>">On <span>fait connaissance</span> ?</h2>
  <p class="sub" data-ar="سؤال عن منتجاتنا أو مشروع شراكة وتوزيع؟ راسلونا.">Une question sur nos produits, un projet de partenariat ou de distribution ? Écrivez-nous.</p>
- <form id="form">
+ <form class="f" id="form">
   <input placeholder="Nom" required><input placeholder="Société">
   <input type="email" placeholder="Email" required><input type="tel" placeholder="Téléphone">
-  <select id="prod"><option>Information générale</option><option>Liquide vaisselle</option><option>Liquide lessive</option><option>Eau de javel</option><option>Lave sol</option><option>Sanibon</option><option>Parfumant multi-usages La Blanche</option><option>Partenariat / distribution</option></select>
-  <textarea placeholder="Votre message"></textarea>
+  <select class="full" id="prod"></select>
+  <textarea class="full" placeholder="Votre message"></textarea>
   <button class="pill" type="submit" data-ar="إرسال →">Envoyer →</button>
  </form>
 </div>
 </main>
-
-<footer class="wrap"><img src="https://lina-clean.com/images/logo.png" alt="Lina Clean"><span data-ar="© لينا كلين. جميع الحقوق محفوظة.">© Lina Clean. Tous droits réservés.</span></footer>
-
+<div id="ftr"></div>
+<script src="data.js"></script><script src="app.js"></script>
 <script>
-document.documentElement.classList.add('js');
-// marquee
-document.querySelectorAll('.mq').forEach(el=>{const h=el.dataset.w.split('|').map(w=>w+'<span>✦</span>').join('');el.innerHTML=h.repeat(4)});
-// reveal
-const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{threshold:.08});
-document.querySelectorAll('.rv').forEach((el,i)=>{el.style.transitionDelay=(i%3)*70+'ms';io.observe(el)});
-// menu
-const menu=document.getElementById('menu'),burger=document.getElementById('burger');
-burger.onclick=()=>{menu.classList.toggle('open');burger.textContent=menu.classList.contains('open')?'✕':'☰'};
-menu.querySelectorAll('a').forEach(a=>a.onclick=()=>{menu.classList.remove('open');burger.textContent='☰'});
-// language
-const T=[...document.querySelectorAll('[data-ar]')];T.forEach(e=>e.dataset.fr=e.innerHTML);
-let ar=false;
-document.getElementById('lang').onclick=function(){ar=!ar;
- document.documentElement.lang=ar?'ar':'fr';document.documentElement.dir=ar?'rtl':'ltr';
- T.forEach(e=>e.innerHTML=ar?e.dataset.ar:e.dataset.fr);this.textContent=ar?'FR':'عربي'};
-// product preselect
-document.querySelectorAll('.tile').forEach(t=>t.addEventListener('click',()=>{const s=document.getElementById('prod');[...s.options].forEach(o=>{if(o.text===t.dataset.p)s.value=o.text})}));
-document.getElementById('form').onsubmit=e=>{e.preventDefault();e.target.querySelector('button').textContent=ar?'تم الإرسال ✓':'Merci, c\'est envoyé ✓'};
+// contact select
+const sel=document.getElementById('prod');
+sel.innerHTML='<option>Information générale</option>'+ORDER.map(k=>'<option value="'+k+'">'+PRODUCTS[k].name+'</option>').join('')+'<option value="dist">Partenariat / distribution</option>';
+const q=new URLSearchParams(location.search).get('p');if(q&&[...sel.options].some(o=>o.value===q))sel.value=q;
+document.getElementById('form').onsubmit=e=>{e.preventDefault();okForm(e.target,'Merci, message envoyé !','شكرا، تم إرسال رسالتكم!')};
+// conseiller
+const qres=document.getElementById('qres');
+function showQ(k){const p=PRODUCTS[k];const ar=App.get()==='ar';
+ qres.innerHTML='<div class="qcard"><img src="'+p.img+'" alt=""><div><span class="tag" style="background:'+p.bg+'">'+(ar?p.tagAr:p.tag)+'</span><h3>'+(ar?p.ar:p.name)+'</h3><p>'+(ar?p.shortAr:p.short)+'</p><a class="pill" href="produit.html?p='+k+'">'+(ar?'الفيش التقني المفصّل ←':'Voir la fiche technique →')+'</a></div></div>'}
+document.querySelectorAll('#qchips button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#qchips button').forEach(x=>x.classList.remove('on'));b.classList.add('on');showQ(b.dataset.k)});
+qres.innerHTML='<p style="font-size:18px;opacity:.7" data-ar="اختاروا ما تريدون تنظيفه وسنقترح عليكم المنتج المناسب 👆">Choisissez ce que vous voulez nettoyer, on vous recommande le bon produit 👆</p>';
+App.refresh();
 </script>
-</body>
-</html>
+</body></html>
