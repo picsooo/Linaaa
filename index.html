@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
-<title>Lina Clean — Le propre, en grand</title>
+<title data-ar="لينا كلين — النظافة في أبهى حلّة">Lina Clean — Le propre, en grand</title>
 <meta name="description" content="Lina Clean : liquide vaisselle, lessive, javel, lave sol, Sanibon. Fiches techniques, espace revendeurs et recrutement.">
 </head><body>
 <div id="hdr"></div>
@@ -11,7 +11,7 @@
  <div class="hrow">
   <p data-ar="غسيل الأواني، الملابس، الأرضيات والحمّامات. حلول تنظيف فعّالة للبيت وللمحترفين.">Vaisselle, linge, sols, sanitaires. Des solutions de nettoyage performantes pour la maison et les pros.</p>
   <div class="ar">اللمسة الأخيرة<br>قبل ما يجو الضياف</div>
-  <a class="pill" href="#gamme" data-ar="اكتشف المنتجات ↓">Voir la gamme ↓</a>
+  <div style="display:flex;gap:10px;flex-wrap:wrap"><a class="pill" href="#gamme" data-ar="اكتشف المنتجات ↓">Voir la gamme ↓</a><a class="pill ghost" href="assistant.html" data-ar="ساعدوني في الاختيار ✨">Trouver mon produit ✨</a></div>
  </div>
  <div class="trio rv">
   <figure><img src="https://lina-clean.com/images/lessive2.jpg" alt="Produits Lina Clean"></figure>
@@ -38,6 +38,7 @@
   <a class="tile rv" style="--bg:var(--lav)" href="produit.html?p=sanibon"><div class="ph"><img src="https://lina-clean.com/images/sanibon.jpg" alt="Sanibon" loading="lazy"><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></div><div class="meta"><span class="tag" data-ar="حمّامات">Sanitaires</span><h3 data-ar="سانيبون">Sanibon</h3><p data-ar="العناية بالحمّامات والمراحيض.">L'entretien des sanitaires.</p><span class="go" data-ar="الفيش التقني المفصّل">Fiche technique détaillée</span></div></a>
   <a class="tile new rv" href="produit.html?p=blanche"><div><span class="badge" data-ar="جديد · لا بلانش">Nouveau · La Blanche</span><h3 data-ar="معطّر متعدد الاستعمالات برائحة الزهور البيضاء.">Parfumant multi-usages, senteur fleurs blanches.</h3></div><div class="ar">خلي الريحة الزينة<br><b>تكمّل النظافة</b></div><span class="fbadge"><i class="ic"></i><b data-ar="فيش تقني">Fiche technique</b></span></a>
  </div>
+ <div style="text-align:center;margin-top:30px"><a class="pill dark" href="produits.html" data-ar="تصفّحوا كل المنتجات والألوان ←">Voir tous les produits et couleurs →</a></div>
 </div></section>
 
 <section id="conseil" class="conseil"><div class="wrap">
@@ -51,6 +52,7 @@
   <button data-k="blanche" data-ar="🌸 عطر البيت">🌸 Parfumer</button>
  </div>
  <div class="qres" id="qres"></div>
+ <div style="margin-top:8px"><a class="pill dark" href="assistant.html" data-ar="المستشار الكامل: الألوان، الأرضيات، الملابس ←">Lancer le conseiller complet (couleurs, sols, linge) →</a></div>
 </div></section>
 
 <section id="parfums" class="perf"><div class="wrap">
@@ -91,10 +93,10 @@
  <h2 data-ar="نتعرّف <span>عليكم؟</span>">On <span>fait connaissance</span> ?</h2>
  <p class="sub" data-ar="سؤال عن منتجاتنا أو مشروع شراكة وتوزيع؟ راسلونا.">Une question sur nos produits, un projet de partenariat ou de distribution ? Écrivez-nous.</p>
  <form class="f" id="form">
-  <input placeholder="Nom" required><input placeholder="Société">
-  <input type="email" placeholder="Email" required><input type="tel" placeholder="Téléphone">
+  <input placeholder="Nom" data-ar-ph="الاسم" required><input placeholder="Société" data-ar-ph="المؤسسة">
+  <input type="email" placeholder="Email" data-ar-ph="البريد الإلكتروني" required><input type="tel" placeholder="Téléphone" data-ar-ph="الهاتف">
   <select class="full" id="prod"></select>
-  <textarea class="full" placeholder="Votre message"></textarea>
+  <textarea class="full" id="cmsg" placeholder="Votre message" data-ar-ph="رسالتكم"></textarea>
   <button class="pill" type="submit" data-ar="إرسال →">Envoyer →</button>
  </form>
 </div>
@@ -104,15 +106,21 @@
 <script>
 // contact select
 const sel=document.getElementById('prod');
-sel.innerHTML='<option>Information générale</option>'+ORDER.map(k=>'<option value="'+k+'">'+PRODUCTS[k].name+'</option>').join('')+'<option value="dist">Partenariat / distribution</option>';
+sel.innerHTML=opt('Information générale','معلومات عامة')+ORDER.map(k=>opt(PRODUCTS[k].name,PRODUCTS[k].ar,'value="'+k+'"')).join('')+opt('Partenariat / distribution','شراكة / توزيع','value="dist"');
 const q=new URLSearchParams(location.search).get('p');if(q&&[...sel.options].some(o=>o.value===q))sel.value=q;
 document.getElementById('form').onsubmit=e=>{e.preventDefault();okForm(e.target,'Merci, message envoyé !','شكرا، تم إرسال رسالتكم!')};
 // conseiller
 const qres=document.getElementById('qres');
-function showQ(k){const p=PRODUCTS[k];const ar=App.get()==='ar';
- qres.innerHTML='<div class="qcard"><img src="'+p.img+'" alt=""><div><span class="tag" style="background:'+p.bg+'">'+(ar?p.tagAr:p.tag)+'</span><h3>'+(ar?p.ar:p.name)+'</h3><p>'+(ar?p.shortAr:p.short)+'</p><a class="pill" href="produit.html?p='+k+'">'+(ar?'الفيش التقني المفصّل ←':'Voir la fiche technique →')+'</a></div></div>'}
+var showQ=function(k){const p=PRODUCTS[k];const ar=App.get()==='ar';
+ qres.innerHTML='<div class="qcard"><img src="'+p.img+'" alt=""><div><span class="tag" style="background:'+p.bg+'">'+(ar?p.tagAr:p.tag)+'</span><h3>'+(ar?p.ar:p.name)+'</h3><p>'+(ar?p.shortAr:p.short)+'</p><a class="pill" href="produit.html?p='+k+'">'+(ar?'الفيش التقني المفصّل ←':'Voir la fiche technique →')+'</a></div></div>'};
 document.querySelectorAll('#qchips button').forEach(b=>b.onclick=()=>{document.querySelectorAll('#qchips button').forEach(x=>x.classList.remove('on'));b.classList.add('on');showQ(b.dataset.k)});
 qres.innerHTML='<p style="font-size:18px;opacity:.7" data-ar="اختاروا ما تريدون تنظيفه وسنقترح عليكم المنتج المناسب 👆">Choisissez ce que vous voulez nettoyer, on vous recommande le bon produit 👆</p>';
+const S=new URLSearchParams(location.search).get('sel');
+if(S){const names=S.split(',').map(x=>{const [k,v]=x.split(':');const p=PRODUCTS[k];if(!p)return null;return '- '+p.name+(v!==undefined&&p.variants&&p.variants[v]?' ('+p.variants[v].n+')':'')}).filter(Boolean);
+ if(names.length)document.getElementById('cmsg').value='Bonjour, je souhaite un tarif pour :\n'+names.join('\n');}
+let lastQ=null;
+const _sq=showQ;showQ=k=>{lastQ=k;_sq(k)};
+document.addEventListener('langchange',()=>{if(lastQ)showQ(lastQ);else{qres.innerHTML='<p style="font-size:18px;opacity:.7">'+L('Choisissez ce que vous voulez nettoyer, on vous recommande le bon produit 👆','اختاروا ما تريدون تنظيفه وسنقترح عليكم المنتج المناسب 👆')+'</p>'}});
 App.refresh();
 </script>
 </body></html>
