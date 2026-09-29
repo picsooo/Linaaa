@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+<title>Espace revendeurs — Lina Clean</title>
+<meta name="description" content="Devenez revendeur Lina Clean : ouvrez un compte, préparez votre commande, recevez notre offre.">
+</head><body>
+<div id="hdr"></div>
+<main>
+<section class="phero ink"><div class="bubbles" data-n="18"></div><div class="wrap">
+ <nav class="crumb"><a href="index.html" data-ar="الرئيسية">Accueil</a> / <b data-ar="فضاء الموزّعين">Espace revendeurs</b></nav>
+ <h1 data-ar="كونوا <em>موزّعينا</em> المعتمدين.">Devenez <em>revendeur</em> Lina Clean.</h1>
+ <p class="lead" data-ar="غسيل الأواني، الملابس، الأرضيات، الحمّامات والتعقيم: تشكيلة كاملة لرفوف متجركم.">Vaisselle, linge, sols, sanitaires, désinfection : une gamme complète pour vos rayons.</p>
+ <div class="ar" style="color:#fff">انضمّوا لشبكة <b style="color:var(--red)">لينا كلين</b></div>
+ <div class="acts"><a class="pill" href="#simulateur" data-ar="حضّروا طلبيتكم ↓">Préparer ma commande ↓</a><a class="pill white" href="#compte" data-ar="فتح حساب">Ouvrir un compte</a></div>
+</div></section>
+
+<section><div class="wrap">
+ <h2 class="rv" data-ar="لماذا <em>لينا كلين؟</em>">Pourquoi<br><em>Lina Clean</em> ?</h2>
+ <div class="cards4">
+  <div class="cc rv" style="--bg:var(--pink)"><div class="ico">🧴</div><h3 data-ar="تشكيلة كاملة">Une gamme complète</h3><p data-ar="مطبخ، ملابس، أرضيات، حمّامات وتعقيم في مكان واحد.">Cuisine, linge, sols, sanitaires et désinfection au même endroit.</p></div>
+  <div class="cc rv" style="--bg:var(--sun)"><div class="ico">👥</div><h3 data-ar="زبائن متنوّعون">Tous vos clients</h3><p data-ar="منتجات للأفراد وللمحترفين على السواء.">Des produits pour les particuliers comme pour les professionnels.</p></div>
+  <div class="cc rv" style="--bg:var(--mint)"><div class="ico">📄</div><h3 data-ar="فيش تقني لكل منتج">Fiches techniques</h3><p data-ar="فيش تقني مفصّل لكل منتج لمساعدتكم على البيع.">Une fiche détaillée par produit pour conseiller vos clients.</p></div>
+  <div class="cc rv" style="--bg:var(--lav)"><div class="ico">🤝</div><h3 data-ar="محاور مخصّص">Un interlocuteur dédié</h3><p data-ar="فريق تجاري يرافقكم من الطلب إلى التسليم.">Une équipe commerciale à votre écoute, de la demande à la livraison.</p></div>
+ </div>
+</div></section>
+
+<section style="background:#fff;border-radius:48px;margin-inline:clamp(10px,2vw,24px)"><div class="wrap">
+ <h2 class="rv" data-ar="ثلاث <em>خطوات</em> فقط.">Trois <em>étapes</em>, c'est tout.</h2>
+ <div class="steps">
+  <div class="st rv"><h3 data-ar="اطلبوا حسابا">Demandez un compte</h3><p data-ar="املؤوا الاستمارة أدناه بمعلومات نشاطكم.">Remplissez le formulaire ci-dessous avec les informations de votre activité.</p></div>
+  <div class="st rv"><h3 data-ar="نتّصل بكم">On vous rappelle</h3><p data-ar="يدرس فريقنا الطلب ويتّصل بكم لعرض الشروط.">Notre équipe étudie votre demande et vous contacte pour présenter les conditions.</p></div>
+  <div class="st rv"><h3 data-ar="اطلبوا واستلموا">Commandez &amp; recevez</h3><p data-ar="حضّروا طلبياتكم واستلموها.">Passez vos commandes et suivez leur livraison.</p></div>
+ </div>
+</div></section>
+
+<section id="simulateur"><div class="wrap">
+ <h2 class="rv" data-ar="محاكي <em>الطلبية.</em>">Simulateur de<br><em>commande.</em></h2>
+ <p class="rv" style="margin-top:18px;font-size:18px;max-width:520px" data-ar="اختاروا الكميات (بالطرود) وسنحضّر لكم ملخّصا جاهزا للإرسال.">Choisissez vos quantités (en colis) : on prépare un récapitulatif prêt à envoyer.</p>
+ <div class="sim">
+  <div class="rows rv" id="rows"></div>
+  <div class="recap rv"><h3 data-ar="ملخّص طلبيتكم">Votre récapitulatif</h3><ul id="rl"></ul><div class="tot" id="tot"></div>
+   <div class="acts"><button class="pill" id="use" data-ar="أضيفوها إلى طلبي ↓">Ajouter à ma demande ↓</button><button class="pill white" id="cp" data-ar="انسخوا الملخّص">Copier le récapitulatif</button></div></div>
+ </div>
+</div></section>
+
+<section id="compte" class="lightform"><h2 class="rv" data-ar="افتحوا <em style='color:var(--red);font-style:normal'>حساب</em> موزّع.">Ouvrez votre <em style="color:var(--red);font-style:normal">compte</em> revendeur.</h2>
+ <form class="f" id="rf">
+  <input placeholder="Nom de la société" required><input placeholder="Nom du responsable" required>
+  <input type="tel" placeholder="Téléphone" required><input type="email" placeholder="Email" required>
+  <select id="wil" required><option value="">Wilaya</option></select>
+  <select required><option value="">Type d'activité</option><option>Grossiste</option><option>Demi-grossiste</option><option>Supérette / épicerie</option><option>Grande surface</option><option>Droguerie</option><option>Collectivité / professionnel</option></select>
+  <label class="chk full"><input type="checkbox"><span data-ar="أتوفر على سجل تجاري ورقم التعريف الجبائي.">Je dispose d'un registre du commerce et d'un NIF.</span></label>
+  <textarea class="full" id="msg" placeholder="Votre message / votre commande"></textarea>
+  <button class="pill" type="submit" data-ar="إرسال الطلب →">Envoyer ma demande →</button>
+ </form>
+</section>
+
+<section><div class="wrap">
+ <h2 class="rv" data-ar="أسئلة <em>شائعة.</em>">Questions <em>fréquentes.</em></h2>
+ <div class="faq">
+  <details class="rv"><summary data-ar="من يمكنه أن يصبح موزّعا؟">Qui peut devenir revendeur ?</summary><p data-ar="تجّار الجملة ونصف الجملة، المساحات التجارية، محلات المواد المنزلية والمؤسسات المهتمة بمنتجاتنا.">Grossistes, demi-grossistes, supérettes, grandes surfaces, drogueries et collectivités intéressés par nos produits.</p></details>
+  <details class="rv"><summary data-ar="كيف أحصل على الكتالوج والفيش التقنية؟">Comment obtenir le catalogue et les fiches techniques ?</summary><p data-ar="كل منتج له صفحة بفيش تقني قابل للطباعة، ويرسل لكم فريقنا الكتالوج الكامل عند طلب الحساب.">Chaque produit a sa page avec une fiche imprimable ; notre équipe vous envoie le catalogue complet à l'ouverture du compte.</p></details>
+  <details class="rv"><summary data-ar="كيف أقدّم طلبية؟">Comment passer commande ?</summary><p data-ar="حضّروا طلبيتكم بالمحاكي أعلاه وأرسلوها مع طلب الحساب، وسيتّصل بكم فريقنا التجاري.">Préparez votre commande avec le simulateur ci-dessus et envoyez-la avec votre demande : notre équipe commerciale vous recontacte.</p></details>
+  <details class="rv"><summary data-ar="في أي مناطق تعملون؟">Dans quelles régions livrez-vous ?</summary><p data-ar="اختاروا ولايتكم في الاستمارة وسنؤكّد لكم إمكانيات التوزيع.">Sélectionnez votre wilaya dans le formulaire, nous vous confirmons les possibilités de livraison.</p></details>
+ </div>
+</div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="app.js"></script>
+<script>
+document.getElementById('wil').innerHTML+=WILAYAS.map((w,i)=>'<option>'+String(i+1).padStart(2,'0')+' — '+w+'</option>').join('');
+const Q={};ORDER.forEach(k=>Q[k]=0);
+const rows=document.getElementById('rows');
+rows.innerHTML=ORDER.map(k=>{const p=PRODUCTS[k];return '<div class="rw"><img src="'+p.img+'" alt="" loading="lazy"><b><span data-ar="'+p.ar.replace(/"/g,'')+'">'+p.name+'</span><small data-ar="'+p.tagAr+'">'+p.tag+'</small></b><div class="stp"><button data-k="'+k+'" data-d="-1" aria-label="-">−</button><output id="q-'+k+'">0</output><button data-k="'+k+'" data-d="1" aria-label="+">+</button></div></div>'}).join('');
+function recap(){const ar=App.get()==='ar';const l=ORDER.filter(k=>Q[k]>0);
+ document.getElementById('rl').innerHTML=l.length?l.map(k=>'<li><span>'+(ar?PRODUCTS[k].ar:PRODUCTS[k].name)+'</span><b>× '+Q[k]+'</b></li>').join(''):'<li class="empty">'+(ar?'أضيفوا منتجات لبناء طلبيتكم…':'Ajoutez des produits pour construire votre commande…')+'</li>';
+ const t=l.reduce((s,k)=>s+Q[k],0);document.getElementById('tot').textContent=t?(ar?'المجموع: ':'Total : ')+t+(ar?' طرد':' colis')+' — '+l.length+(ar?' مرجع':' référence(s)'):''}
+function text(){return 'Demande de commande Lina Clean:\n'+ORDER.filter(k=>Q[k]>0).map(k=>'- '+PRODUCTS[k].name+' × '+Q[k]+' colis').join('\n')}
+rows.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;const k=b.dataset.k;Q[k]=Math.max(0,Q[k]+ +b.dataset.d);document.getElementById('q-'+k).textContent=Q[k];recap()});
+document.getElementById('use').onclick=()=>{if(!ORDER.some(k=>Q[k]>0))return;document.getElementById('msg').value=text();document.getElementById('compte').scrollIntoView({behavior:'smooth'})};
+document.getElementById('cp').onclick=function(){const t=text();const d=this.textContent;try{navigator.clipboard.writeText(t)}catch(e){}this.textContent=App.get()==='ar'?'تم النسخ ✓':'Copié ✓';setTimeout(()=>this.textContent=d,1600)};
+document.getElementById('rf').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée ! On vous rappelle vite.','تم إرسال الطلب! سنتّصل بكم قريبا.')};
+recap();App.refresh();
+</script></body></html>
