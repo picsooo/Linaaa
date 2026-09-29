@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+<title data-ar="المستشار — لينا كلين">Conseiller produit — Lina Clean</title>
+<meta name="description" content="Répondez à quelques questions : le conseiller Lina Clean vous recommande le bon produit, la bonne couleur et les bons gestes.">
+</head><body>
+<div id="hdr"></div>
+<main>
+<section class="ahero"><div class="bubbles" data-n="14"></div><div class="wrap">
+ <nav class="crumb"><a href="index.html" data-ar="الرئيسية">Accueil</a> / <b data-ar="المستشار">Conseiller</b></nav>
+ <h1 data-ar="نختار لكم <em>المنتج المناسب.</em>">On vous trouve<br>le <em>bon produit.</em></h1>
+ <p class="lead" data-ar="أجيبوا عن بضعة أسئلة، اختاروا لونكم، وسنقترح عليكم المنتج والنصائح المناسبة.">Répondez à quelques questions, choisissez votre couleur : on vous recommande le produit et les bons gestes.</p>
+</div></section>
+
+<section style="padding-top:20px"><div class="wrap">
+ <div class="wiz" id="wiz">
+  <div class="wtop"><button class="wback" id="wback" aria-label="Retour" disabled>←</button><div class="wbar"><i id="wbar"></i></div><div class="wcount" id="wcount"></div></div>
+  <div id="stage"></div>
+ </div>
+ <div class="mysel rv" id="mysel"></div>
+</div></section>
+
+<section style="padding-top:0"><div class="wrap"><a class="esp red" href="produits.html" style="min-height:0;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap"><div><h3 style="font-size:clamp(28px,4vw,52px)" data-ar="تصفّحوا كل المنتجات">Parcourir tous les produits</h3><p data-ar="كل المراجع والألوان مع البحث والتصفية.">Toutes les références et couleurs, avec recherche et filtres.</p></div><span class="lk" style="margin:0"><span data-ar="الكتالوج">Le catalogue</span> →</span></a></div></section>
+</main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="app.js"></script>
+<script>
+const P=PRODUCTS;
+const ARR=()=>L('→','←');
+// ---------- flow ----------
+const FLOW={
+ start:{q:['Que voulez-vous nettoyer ?','ماذا تريدون تنظيفه؟'],sub:['Choisissez pour démarrer.','اختاروا للبدء.'],key:'goal',opts:[
+  {v:'linge',em:'👕',t:['Le linge','الملابس'],s:['Lessive','غسيل'],next:'linge_type'},
+  {v:'sols',em:'🧽',t:['Les sols','الأرضيات'],s:['Lave sol','منظّف الأرضيات'],next:'sol_type'},
+  {v:'vaisselle',em:'🍽️',t:['La vaisselle','الأواني'],s:['Cuisine','مطبخ'],next:'vais_use'},
+  {v:'sanitaires',em:'🚿',t:['Les sanitaires','الحمّام'],s:['Sanibon','سانيبون'],next:'sani_color'},
+  {v:'desinfecter',em:'🧴',t:['Désinfecter','التعقيم'],s:['Eau de javel','ماء جافيل'],next:'javel_use'},
+  {v:'parfumer',em:'🌸',t:['Parfumer la maison','تعطير البيت'],s:['La Blanche','لا بلانش'],next:'result'}]},
+ linge_type:{q:['De quelle couleur est votre linge ?','ما لون ملابسكم؟'],sub:['Touchez la couleur qui correspond le mieux à votre panier.','اختاروا اللون الأقرب لسلّة غسيلكم.'],key:'linge',opts:[
+  {v:'blancs',bg:'#ffffff',t:['Blancs','بيضاء'],next:'linge_mode'},
+  {v:'couleurs',bg:'conic-gradient(#ff5d73,#ffd166,#4dd0e1,#a78bfa,#ff5d73)',t:['Couleurs','ملوّنة'],next:'linge_mode'},
+  {v:'fonces',bg:'#1b1b2f',t:['Foncés','داكنة'],next:'linge_mode'},
+  {v:'delicats',bg:'#f3d3e6',t:['Délicats','حسّاسة'],s:['Soie, laine…','حرير، صوف…'],next:'linge_mode'},
+  {v:'mixte',bg:'linear-gradient(90deg,#fff 50%,#1b1b2f 50%)',t:['Un peu de tout','خليط'],next:'linge_mode'}],sw:true},
+ linge_mode:{q:['Comment lavez-vous ?','كيف تغسلون؟'],key:'mode',opts:[
+  {v:'machine',em:'🫧',t:['En machine','بالآلة'],next:'linge_soil'},
+  {v:'main',em:'🖐️',t:['À la main','باليد'],next:'linge_soil'}]},
+ linge_soil:{q:['Quel niveau de salissure ?','ما درجة الاتساخ؟'],key:'soil',opts:[
+  {v:'leger',em:'💧',t:['Léger','خفيف'],s:['Linge du quotidien','ملابس يومية'],next:'result'},
+  {v:'moyen',em:'💧💧',t:['Moyen','متوسط'],s:['Un peu porté','مستعمل قليلا'],next:'result'},
+  {v:'fort',em:'💧💧💧',t:['Fort','شديد'],s:['Taches, travail','بقع، عمل'],next:'result'}]},
+ sol_type:{q:['Quel type de sol ?','ما نوع الأرضية؟'],key:'sol',opts:[
+  {v:'carrelage',em:'🔲',t:['Carrelage','بلاط'],next:'sol_color'},
+  {v:'marbre',em:'🏛️',t:['Marbre / granito','رخام / غرانيتو'],next:'sol_color'},
+  {v:'parquet',em:'🪵',t:['Parquet / stratifié','باركي / لامينات'],next:'sol_color'},
+  {v:'autre',em:'🏠',t:['Autre','آخر'],next:'sol_color'}]},
+ sol_color:{q:['Choisissez votre couleur','اختاروا لونكم'],sub:['Le flacon change de couleur en direct sur le résultat.','ستتغيّر ألوان القارورة مباشرة في النتيجة.'],key:'color',from:'lavesol',next:'result'},
+ vais_use:{q:['Pour quel usage ?','لأي استعمال؟'],key:'use',opts:[
+  {v:'maison',em:'🏠',t:['À la maison','في البيت'],next:'result'},
+  {v:'pro',em:'🍴',t:['Restauration / pro','مطاعم / محترفون'],next:'result'}]},
+ sani_color:{q:['Choisissez votre couleur','اختاروا لونكم'],sub:['Trois senteurs disponibles.','ثلاث روائح متوفرة.'],key:'color',from:'sanibon',next:'result'},
+ javel_use:{q:['Que voulez-vous désinfecter ?','ماذا تريدون تعقيمه؟'],key:'jv',opts:[
+  {v:'surfaces',em:'🧹',t:['Surfaces & sols','الأسطح والأرضيات'],next:'result'},
+  {v:'sanitaires',em:'🚽',t:['Sanitaires','الحمّامات'],next:'result'},
+  {v:'cuisine',em:'🍳',t:['Cuisine & plans de travail','المطبخ وأسطح العمل'],next:'result'}]}
+};
+const TOT={linge:5,sols:4,vaisselle:3,sanitaires:3,desinfecter:3,parfumer:2};
+const REL={linge:['blanche','lavesol'],sols:['blanche','sanibon'],vaisselle:['lessive','javel'],sanitaires:['javel','lavesol'],desinfecter:['sanibon','lavesol'],parfumer:['lavesol','lessive']};
+const LG={blancs:['Blancs','بيضاء'],couleurs:['Couleurs','ملوّنة'],fonces:['Foncés','داكنة'],delicats:['Délicats','حسّاسة'],mixte:['Mixte','خليط']};
+const SW={blancs:'#ffffff',couleurs:'conic-gradient(#ff5d73,#ffd166,#4dd0e1,#a78bfa,#ff5d73)',fonces:'#1b1b2f',delicats:'#f3d3e6',mixte:'linear-gradient(90deg,#fff 50%,#1b1b2f 50%)'};
+let cur='start',path=[],ans={},sel=[];
+try{sel=JSON.parse(localStorage.getItem('lc_sel')||'[]')}catch(e){}
+const stage=document.getElementById('stage');
+const T2=a=>L(a[0],a[1]);
+
+function tips(){
+ const g=ans.goal,t=[];
+ if(g==='linge'){
+  ({blancs:[['Lavez les blancs séparément des couleurs.','اغسلوا الأبيض بمعزل عن الملوّن.']],
+    couleurs:[['Séparez les couleurs vives et évitez les hautes températures pour préserver l\'éclat.','افصلوا الألوان الزاهية وتجنّبوا الحرارة العالية للحفاظ على بريقها.']],
+    fonces:[['Retournez les vêtements foncés avant lavage pour préserver la couleur.','اقلبوا الملابس الداكنة قبل الغسيل للحفاظ على لونها.']],
+    delicats:[['Choisissez un cycle délicat à basse température et vérifiez l\'étiquette d\'entretien.','اختاروا برنامجا لطيفا بحرارة منخفضة وراجعوا ملصقة العناية.']],
+    mixte:[['Triez votre linge par couleur pour de meilleurs résultats.','رتّبوا الغسيل حسب اللون لنتيجة أفضل.']]})[ans.linge].forEach(x=>t.push(x));
+  if(ans.mode==='machine')t.push(['Versez la lessive dans le bac ou le tambour, en respectant la dose indiquée sur l\'emballage.','صبّوا المنظّف في الحجرة أو الحوض مع احترام الجرعة المدوّنة على العبوة.']);
+  else t.push(['À la main : diluez la lessive dans l\'eau avant d\'y plonger le linge, puis rincez bien.','باليد: خفّفوا المنظّف في الماء قبل غمر الملابس ثم اشطفوا جيدا.']);
+  if(ans.soil==='fort')t.push(['Linge très sale : ajustez la dose selon l\'emballage et n\'hésitez pas à laisser tremper.','ملابس شديدة الاتساخ: عدّلوا الجرعة حسب العبوة ولا مانع من النقع.']);
+  if(ans.soil==='leger')t.push(['Linge peu sale : une dose modérée suffit, rincez à l\'eau claire.','ملابس قليلة الاتساخ: جرعة معتدلة تكفي مع شطف بالماء.']);
+ }
+ if(g==='sols'){
+  t.push(['Diluez une dose dans un seau d\'eau, puis lavez avec une serpillière.','خفّفوا جرعة في دلو ماء ثم امسحوا بالممسحة.']);
+  if(ans.sol==='marbre'||ans.sol==='autre')t.push(['Sur les revêtements délicats, testez d\'abord sur une zone discrète.','على الأرضيات الحسّاسة جرّبوه أولا على مكان غير ظاهر.']);
+  if(ans.sol==='parquet')t.push(['Sur parquet ou stratifié, utilisez une serpillière bien essorée, sans excès d\'eau, et testez sur une zone discrète.','على الباركي أو اللامينات استعملوا ممسحة معصورة جيدا دون إفراط في الماء وجرّبوه أولا على مكان غير ظاهر.']);
+  if(ans.sol==='carrelage')t.push(['Sur carrelage, laissez sécher à l\'air, un rinçage n\'est généralement pas nécessaire.','على البلاط اتركوه يجفّ في الهواء ولا حاجة للشطف غالبا.']);
+ }
+ if(g==='vaisselle'){t.push(['Une petite quantité sur une éponge humide suffit, puis rincez abondamment.','كمية صغيرة على إسفنجة مبلّلة تكفي ثم اشطفوا جيدا.']);
+  if(ans.use==='pro')t.push(['Pour un usage professionnel, contactez-nous : nous vous orienterons vers les formats adaptés.','للاستعمال المهني تواصلوا معنا وسنوجّهكم نحو العبوات المناسبة.']);}
+ if(g==='sanitaires'){t.push(['Appliquez, laissez agir quelques minutes, frottez puis rincez.','ضعوه واتركوه دقائق ثم افركوا واشطفوا.']);
+  t.push(['Portez des gants, aérez, et ne mélangez jamais avec de l\'eau de javel.','ارتدوا القفازات وهوّوا المكان ولا تخلطوه أبدا بماء جافيل.']);}
+ if(g==='desinfecter'){t.push(['Diluez dans l\'eau, laissez agir quelques minutes, puis rincez abondamment.','خفّفوه بالماء واتركوه دقائق ثم اشطفوا جيدا.']);
+  t.push(['Ne jamais mélanger avec un autre produit (détartrant, acide, ammoniaque).','لا تخلطوه أبدا بمنتج آخر (مزيل الكلس، حمض، أمونياك).']);
+  if(ans.jv==='cuisine')t.push(['Rincez soigneusement les surfaces en contact avec les aliments.','اشطفوا جيدا الأسطح التي تلامس الطعام.']);
+  if(ans.jv==='surfaces')t.push(['Aérez la pièce et portez des gants.','هوّوا المكان وارتدوا القفازات.']);}
+ if(g==='parfumer'){t.push(['Utilisez selon les indications de l\'emballage, puis aérez pour profiter de la senteur.','استعملوه حسب إرشادات العبوة ثم هوّوا المكان لتستمتعوا بالرائحة.']);}
+ return t;
+}
+function resolve(){
+ const g=ans.goal;const slug={linge:'lessive',sols:'lavesol',vaisselle:'vaisselle',sanitaires:'sanibon',desinfecter:'javel',parfumer:'blanche'}[g];
+ const p=P[slug];let vi=(g==='sols'||g==='sanitaires')?(ans.color||0):null;
+ const why=[];
+ if(g==='linge'){why.push({t:LG[ans.linge],sw:SW[ans.linge]});why.push({t:ans.mode==='machine'?['En machine','بالآلة']:['À la main','باليد']});why.push({t:{leger:['Salissure légère','اتساخ خفيف'],moyen:['Salissure moyenne','اتساخ متوسط'],fort:['Salissure forte','اتساخ شديد']}[ans.soil]});}
+ if(g==='sols'){why.push({t:{carrelage:['Carrelage','بلاط'],marbre:['Marbre / granito','رخام / غرانيتو'],parquet:['Parquet / stratifié','باركي / لامينات'],autre:['Autre sol','أرضية أخرى']}[ans.sol]});}
+ if(g==='vaisselle')why.push({t:ans.use==='pro'?['Usage pro','استعمال مهني']:['Usage maison','استعمال منزلي']});
+ if(g==='desinfecter')why.push({t:{surfaces:['Surfaces & sols','أسطح وأرضيات'],sanitaires:['Sanitaires','حمّامات'],cuisine:['Cuisine','مطبخ']}[ans.jv]});
+ if(g==='sanitaires')why.push({t:['Sanitaires','حمّامات']});
+ if(g==='parfumer')why.push({t:['Senteur fleurs blanches','رائحة الزهور البيضاء']});
+ if(vi!==null){const v=p.variants[vi];why.push({t:[v.n,v.nAr],sw:v.c})}
+ return{slug,p,vi,why,tips:tips()};
+}
+// ---------- render ----------
+function bar(){const tot=TOT[ans.goal]||5;const n=path.length+1;
+ document.getElementById('wbar').style.width=(cur==='result'?100:Math.round(path.length/tot*100))+'%';
+ document.getElementById('wcount').textContent=cur==='result'?'✓':n+' / '+tot;
+ document.getElementById('wback').disabled=!path.length}
+function render(){
+ bar();
+ if(cur==='result')return renderResult();
+ const s=FLOW[cur];let opts;
+ if(s.from){opts=P[s.from].variants.map((v,i)=>({v:i,bg:v.c,t:[v.n,v.nAr],next:s.next}));}
+ else opts=s.opts;
+ const sw=s.sw||s.from;
+ stage.innerHTML='<div class="slide-in"><h2 class="wq">'+T2(s.q)+'</h2>'+(s.sub?'<p class="wsub">'+T2(s.sub)+'</p>':'<p class="wsub"></p>')+'<div class="opts">'+opts.map((o,i)=>'<button class="opt'+(sw?' sw':'')+'" data-i="'+i+'">'+(sw?'<span class="dot" style="background:'+o.bg+'"></span>':'<span class="em">'+o.em+'</span>')+'<span>'+T2(o.t)+(o.s?'<small>'+T2(o.s)+'</small>':'')+'</span></button>').join('')+'</div></div>';
+ stage.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{const o=opts[+b.dataset.i];ans[s.key]=o.v;path.push(cur);cur=o.next;render();wizTop()});
+}
+function wizTop(){const r=document.getElementById('wiz').getBoundingClientRect();if(r.top<0)scrollTo({top:scrollY+r.top-90,behavior:'smooth'})}
+function renderResult(){
+ const r=resolve();const p=r.p;let vi=r.vi;
+ const col=()=>vi!==null?p.variants[vi].c:p.liq;
+ const bg=()=>vi!==null?p.variants[vi].bg:p.bg;
+ const inSel=()=>sel.some(x=>x.s===p.slug&&x.v===vi);
+ stage.innerHTML='<div class="slide-in res"><div class="rstage" id="rstage" style="--rbg:'+bg()+'"><div class="bubbles" data-n="10"></div>'+bottle(col())+'<img class="rthumb" src="'+p.img+'" alt=""><span class="rmatch">🎯 '+L('Le bon choix','الاختيار المناسب')+'</span></div>'+
+ '<div class="rinfo"><span class="rtag">'+L('Notre recommandation','توصيتنا')+'</span><h3>'+L(p.name,p.ar)+'</h3><p class="rs">'+L(p.short,p.shortAr)+'</p>'+
+ '<div class="why">'+r.why.map(w=>'<span>'+(w.sw?'<i class="sd" style="background:'+w.sw+'"></i>':IC.check)+T2(w.t)+'</span>').join('')+'</div>'+
+ (p.variants?'<div class="rvar"><small>'+L('Changer de couleur','غيّروا اللون')+'</small><div class="chips" id="rv">'+p.variants.map((v,i)=>'<button class="chip'+(i===vi?' on':'')+'" data-i="'+i+'" style="--c:'+v.c+'"><i></i>'+L(v.n,v.nAr)+'</button>').join('')+'</div></div>':'')+
+ '<ul class="rtips">'+r.tips.map(x=>'<li>'+IC.check+'<span>'+T2(x)+'</span></li>').join('')+'</ul>'+
+ '<p class="rnote">'+L('Conseils généraux : suivez toujours l\'étiquette d\'entretien et la notice du produit.','نصائح عامة: اتبعوا دائما ملصقة العناية وإرشادات المنتج.')+'</p>'+
+ '<div class="racts"><a class="pill" href="produit.html?p='+p.slug+(vi!==null?'&v='+vi:'')+'">'+IC.doc+' '+L('Fiche technique détaillée','الفيش التقني المفصّل')+'</a><button class="pill dark" id="add">'+(inSel()?'✓ '+L('Ajouté','تمت الإضافة'):'＋ '+L('Ajouter à ma sélection','أضيفوه إلى اختياري'))+'</button><button class="pill ghost" id="again">↺ '+L('Recommencer','ابدؤوا من جديد')+'</button></div></div></div>'+
+ '<h3 style="font-size:clamp(24px,3vw,34px);letter-spacing:-.03em;margin-top:34px">'+L('Pour compléter votre routine','لتكملوا روتينكم')+'</h3><div class="related">'+REL[ans.goal].map(k=>'<a style="--bg:'+P[k].bg+'" href="produit.html?p='+k+'"><img src="'+P[k].img+'" alt=""><div><b>'+L(P[k].name,P[k].ar)+'</b><small>'+L('Voir la fiche','الفيش')+' '+ARR()+'</small></div></a>').join('')+'</div>';
+ App.refresh();
+ if(p.variants)stage.querySelectorAll('#rv button').forEach(b=>b.onclick=()=>{vi=+b.dataset.i;ans.color=vi;
+  stage.querySelectorAll('#rv button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+  const st=document.getElementById('rstage');st.style.setProperty('--rbg',bg());st.querySelector('svg.bt').style.setProperty('--liq',col());
+  stage.querySelectorAll('.why .sd').forEach(d=>{if(d.closest('span')===[...stage.querySelectorAll('.why span')].pop())d.style.background=col()});
+  document.getElementById('add').textContent=inSel()?'✓ '+L('Ajouté','تمت الإضافة'):'＋ '+L('Ajouter à ma sélection','أضيفوه إلى اختياري')});
+ document.getElementById('add').onclick=function(){if(!inSel()){sel.push({s:p.slug,v:vi});save()}this.textContent='✓ '+L('Ajouté','تمت الإضافة');renderSel()};
+ document.getElementById('again').onclick=()=>{cur='start';path=[];ans={};render();wizTop()};
+}
+document.getElementById('wback').onclick=()=>{if(!path.length)return;cur=path.pop();
+ const s=FLOW[cur];if(s&&s.key)delete ans[s.key];render()};
+// ---------- ma sélection ----------
+function save(){try{localStorage.setItem('lc_sel',JSON.stringify(sel))}catch(e){}}
+function selName(x){const p=P[x.s];return L(p.name,p.ar)+(x.v!==null&&p.variants?' — '+L(p.variants[x.v].n,p.variants[x.v].nAr):'')}
+function renderSel(){
+ const el=document.getElementById('mysel');
+ el.innerHTML='<h3>'+L('Ma sélection','اختياري')+'</h3><ul>'+(sel.length?sel.map((x,i)=>'<li><i class="sd" style="background:'+(x.v!==null&&P[x.s].variants?P[x.s].variants[x.v].c:P[x.s].liq)+'"></i><span>'+selName(x)+'</span><button data-i="'+i+'" aria-label="x">✕</button></li>').join(''):'<li class="empty">'+L('Vos produits recommandés apparaîtront ici.','ستظهر هنا المنتجات المقترحة لكم.')+'</li>')+'</ul>'+
+ (sel.length?'<div class="acts"><a class="pill" href="index.html?sel='+sel.map(x=>x.s+(x.v!==null?':'+x.v:'')).join(',')+'#contact">'+L('Demander un tarif','اطلبوا السعر')+' '+ARR()+'</a><button class="pill white" id="cps">'+L('Copier la liste','انسخوا القائمة')+'</button></div>':'');
+ el.querySelectorAll('li button').forEach(b=>b.onclick=()=>{sel.splice(+b.dataset.i,1);save();renderSel()});
+ const c=document.getElementById('cps');if(c)c.onclick=function(){try{navigator.clipboard.writeText(sel.map(selName).join('\n'))}catch(e){}this.textContent=L('Copié ✓','تم النسخ ✓')};
+}
+document.addEventListener('langchange',()=>{render();renderSel()});
+render();renderSel();App.refresh();
+</script></body></html>
