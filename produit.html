@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
+<title>Fiche produit — Lina Clean</title>
+<meta name="description" content="Fiche technique détaillée d'un produit Lina Clean : description, utilisation, précautions.">
+</head><body>
+<div id="hdr"></div>
+<main id="app"></main>
+<div id="ftr"></div>
+<script src="data.js"></script><script src="app.js"></script>
+<script>
+const key=new URLSearchParams(location.search).get('p');
+const p=PRODUCTS[key]||PRODUCTS.vaisselle;
+const i=ORDER.indexOf(p.slug),prev=PRODUCTS[ORDER[(i+ORDER.length-1)%ORDER.length]],next=PRODUCTS[ORDER[(i+1)%ORDER.length]];
+document.title=p.name+' — Fiche technique — Lina Clean';
+const A=s=>String(s).replace(/"/g,'&quot;');
+const specs=[
+ ['Produit','المنتج',p.name,p.ar],
+ ['Catégorie','الفئة',p.cat,p.tagAr],
+ ['Destination','الاستعمال','Particuliers et professionnels','للأفراد والمحترفين'],
+ ['Parfums / senteurs','العطور',p.variants?p.variants.map(v=>v.n).join(', '):'—',p.variants?p.variants.map(v=>v.nAr).join('، '):'—'],
+ ['Conditionnement',' التعبئة',p.slug==='blanche'?'Bouteille 1 L':'Formats sur demande',p.slug==='blanche'?'قارورة 1 لتر':'حسب الطلب'],
+ ['Composition, pH, densité','التركيب، الحموضة، الكثافة','Détaillés dans la fiche PDF complète','مفصّلة في الفيش الكامل PDF'],
+ ['Conservation','التخزين','À l\'abri de la chaleur et de la lumière, flacon bien fermé','بعيدا عن الحرارة والضوء والعبوة مغلقة جيدا'],
+ ['Fabricant','الصانع','Lina Clean','لينا كلين']
+];
+const facts=p.facts.map(f=>'<span data-ar="'+A(f[1])+'">'+f[0]+'</span>').join('');
+const variants=p.variants?'<div class="vrow"><small data-ar="اختاروا العطر">Choisissez le parfum</small><div class="chips" id="vch">'+p.variants.map((v,k)=>'<button class="chip'+(k===0?' on':'')+'" data-i="'+k+'" style="--c:'+v.c+'"><i></i><span data-ar="'+A(v.nAr)+'">'+v.n+'</span></button>').join('')+'</div></div>':'';
+document.getElementById('app').innerHTML=`
+<section class="pstage" id="stage" style="--bg:${p.bg}" data-bg="${p.bg}"><div class="bubbles" data-n="14"></div>
+ <div class="wrap pgrid">
+  <div class="pinfo">
+   <nav class="crumb"><a href="index.html" data-ar="الرئيسية">Accueil</a> / <a href="index.html#gamme" data-ar="المنتجات">Produits</a> / <b data-ar="${A(p.ar)}">${p.name}</b></nav>
+   <span class="tag" data-ar="${A(p.tagAr)}">${p.tag}</span>
+   <h1 data-ar="${A(p.ar)}">${p.name}</h1>
+   <p class="lead" data-ar="${A(p.descAr)}">${p.desc}</p>
+   <div class="facts">${facts}</div>
+   ${variants}
+   <div class="pcta">
+    <a class="pill" href="index.html?p=${p.slug}#contact" data-ar="اطلبوا السعر">Demander un tarif</a>
+    <button class="pill ghost" onclick="window.print()">${IC.print}<span data-ar="اطبعوا الفيش (PDF)">Imprimer la fiche (PDF)</span></button>
+   </div>
+  </div>
+  <div class="pimg rv"><img src="${p.img}" alt="${p.name}">${p.isNew?'<span class="stamp" data-ar="جديد!">Nouveau !</span>':''}</div>
+ </div>
+</section>
+
+<section style="padding-top:clamp(40px,6vw,80px)"><div class="wrap">
+ <div class="tabs noprint" role="tablist" id="tabs">
+  <button class="on" data-t="d">${IC.doc}<span data-ar="الوصف">Description</span></button>
+  <button data-t="u"><span data-ar="طريقة الاستعمال">Utilisation</span></button>
+  <button data-t="c">${IC.warn}<span data-ar="احتياطات">Précautions</span></button>
+  <button data-t="s"><span data-ar="الفيش التقني">Fiche technique</span></button>
+ </div>
+ <div class="panel on" id="p-d"><p class="txt" data-ar="${A(p.descAr)}">${p.desc}</p></div>
+ <div class="panel" id="p-u">${p.uses.map((u,k)=>'<div class="ustep"><i>'+(k+1)+'</i><p data-ar="'+A(u[1])+'">'+u[0]+'</p></div>').join('')}</div>
+ <div class="panel" id="p-c">${p.cautions.map(c=>'<div class="warn">'+IC.warn+'<span data-ar="'+A(c[1])+'">'+c[0]+'</span></div>').join('')}</div>
+ <div class="panel" id="p-s"><table class="spec">${specs.map(s=>'<tr><td data-ar="'+A(s[1])+'">'+s[0]+'</td><td data-ar="'+A(s[3])+'">'+s[2]+'</td></tr>').join('')}</table>
+  <div class="pcta noprint" style="margin-top:26px"><button class="pill" onclick="window.print()">${IC.print}<span data-ar="حمّلوا / اطبعوا الفيش">Télécharger / imprimer la fiche</span></button><a class="pill ghost" href="index.html?p=${p.slug}#contact" data-ar="اطلبوا الفيش الكامل">Demander la fiche complète</a></div></div>
+</div></section>
+
+<section class="relsec" style="padding-top:0"><div class="wrap">
+ <h2 class="rv" style="font-size:clamp(32px,5vw,64px)" data-ar="اكتشفوا <em>أيضا</em>">À découvrir <em>aussi</em></h2>
+ <div class="rel">${ORDER.filter(k=>k!==p.slug).map(k=>{const q=PRODUCTS[k];return '<a class="rc" style="--bg:'+q.bg+'" href="produit.html?p='+k+'"><img src="'+q.img+'" alt="" loading="lazy"><h4 data-ar="'+A(q.ar)+'">'+q.name+'</h4><span data-ar="الفيش التقني ←">Fiche technique →</span></a>'}).join('')}</div>
+ <div class="pn">
+  <a href="produit.html?p=${prev.slug}"><small data-ar="→ السابق">← Précédent</small><b data-ar="${A(prev.ar)}">${prev.name}</b></a>
+  <a href="produit.html?p=${next.slug}"><small data-ar="← التالي">Suivant →</small><b data-ar="${A(next.ar)}">${next.name}</b></a>
+ </div>
+</div></section>
+
+<section class="relsec" style="padding-top:0"><div class="wrap"><a class="esp red" href="revendeurs.html" style="min-height:0;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap"><div><h3 style="font-size:clamp(28px,4vw,52px)" data-ar="أنتم موزّعون؟">Vous êtes revendeur ?</h3><p data-ar="افتحوا حساب موزّع وحضّروا طلبيتكم.">Ouvrez un compte et préparez votre commande.</p></div><span class="lk" style="margin:0"><span data-ar="فضاء الموزّعين">Espace revendeurs</span> →</span></a></div></section>
+`;
+// tabs
+document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('#tabs button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+ document.querySelectorAll('.panel').forEach(x=>x.classList.remove('on'));document.getElementById('p-'+b.dataset.t).classList.add('on')});
+// variants
+if(p.variants)document.querySelectorAll('#vch button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('#vch button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+ document.getElementById('stage').style.setProperty('--bg',p.variants[b.dataset.i].bg)});
+App.refresh();
+</script>
+</body></html>
