@@ -12,7 +12,6 @@ const key=new URLSearchParams(location.search).get('p');
 const p=PRODUCTS[key]||PRODUCTS.vaisselle;
 const i=ORDER.indexOf(p.slug),prev=PRODUCTS[ORDER[(i+ORDER.length-1)%ORDER.length]],next=PRODUCTS[ORDER[(i+1)%ORDER.length]];
 document.title=p.name+' — Fiche technique — Lina Clean';
-const A=s=>String(s).replace(/"/g,'&quot;');
 const specs=[
  ['Produit','المنتج',p.name,p.ar],
  ['Catégorie','الفئة',p.cat,p.tagAr],
@@ -40,7 +39,7 @@ document.getElementById('app').innerHTML=`
     <button class="pill ghost" onclick="window.print()">${IC.print}<span data-ar="اطبعوا الفيش (PDF)">Imprimer la fiche (PDF)</span></button>
    </div>
   </div>
-  <div class="pimg rv"><img src="${p.img}" alt="${p.name}">${p.isNew?'<span class="stamp" data-ar="جديد!">Nouveau !</span>':''}</div>
+  <div class="pimg rv"><img src="${p.img}" alt="${p.name}"><div class="pbot">${bottle(p.variants?p.variants[0].c:p.liq)}</div>${p.isNew?'<span class="stamp" data-ar="جديد!">Nouveau !</span>':''}</div>
  </div>
 </section>
 
@@ -76,7 +75,10 @@ document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{
 // variants
 if(p.variants)document.querySelectorAll('#vch button').forEach(b=>b.onclick=()=>{
  document.querySelectorAll('#vch button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
- document.getElementById('stage').style.setProperty('--bg',p.variants[b.dataset.i].bg)});
+ {const v=p.variants[b.dataset.i];document.getElementById('stage').style.setProperty('--bg',v.bg);document.querySelector('.pbot svg').style.setProperty('--liq',v.c)}});
+const vp=new URLSearchParams(location.search).get('v');
+if(p.variants&&vp!==null){const bb=document.querySelector('#vch button[data-i="'+vp+'"]');if(bb)bb.click()}
+document.addEventListener('langchange',()=>{document.title=(L(p.name,p.ar))+' — '+L('Fiche technique','الفيش التقني')+' — Lina Clean'});
 App.refresh();
 </script>
 </body></html>
