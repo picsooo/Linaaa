@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="style.css">
-<title>Espace revendeurs — Lina Clean</title>
+<title data-ar="فضاء الموزّعين — لينا كلين">Espace revendeurs — Lina Clean</title>
 <meta name="description" content="Devenez revendeur Lina Clean : ouvrez un compte, préparez votre commande, recevez notre offre.">
 </head><body>
 <div id="hdr"></div>
@@ -44,12 +44,12 @@
 
 <section id="compte" class="lightform"><h2 class="rv" data-ar="افتحوا <em style='color:var(--red);font-style:normal'>حساب</em> موزّع.">Ouvrez votre <em style="color:var(--red);font-style:normal">compte</em> revendeur.</h2>
  <form class="f" id="rf">
-  <input placeholder="Nom de la société" required><input placeholder="Nom du responsable" required>
-  <input type="tel" placeholder="Téléphone" required><input type="email" placeholder="Email" required>
-  <select id="wil" required><option value="">Wilaya</option></select>
-  <select required><option value="">Type d'activité</option><option>Grossiste</option><option>Demi-grossiste</option><option>Supérette / épicerie</option><option>Grande surface</option><option>Droguerie</option><option>Collectivité / professionnel</option></select>
+  <input placeholder="Nom de la société" data-ar-ph="اسم المؤسسة" required><input placeholder="Nom du responsable" data-ar-ph="اسم المسؤول" required>
+  <input type="tel" placeholder="Téléphone" data-ar-ph="الهاتف" required><input type="email" placeholder="Email" data-ar-ph="البريد الإلكتروني" required>
+  <select id="wil" required><option value="" data-ar="الولاية">Wilaya</option></select>
+  <select required><option value="" data-ar="نوع النشاط">Type d'activité</option><option data-ar="تاجر جملة">Grossiste</option><option data-ar="تاجر نصف جملة">Demi-grossiste</option><option data-ar="متجر صغير / بقالة">Supérette / épicerie</option><option data-ar="مساحة تجارية كبرى">Grande surface</option><option data-ar="محل مواد التنظيف">Droguerie</option><option data-ar="مؤسسة / محترف">Collectivité / professionnel</option></select>
   <label class="chk full"><input type="checkbox"><span data-ar="أتوفر على سجل تجاري ورقم التعريف الجبائي.">Je dispose d'un registre du commerce et d'un NIF.</span></label>
-  <textarea class="full" id="msg" placeholder="Votre message / votre commande"></textarea>
+  <textarea class="full" id="msg" placeholder="Votre message / votre commande" data-ar-ph="رسالتكم / طلبيتكم"></textarea>
   <button class="pill" type="submit" data-ar="إرسال الطلب →">Envoyer ma demande →</button>
  </form>
 </section>
@@ -67,7 +67,7 @@
 <div id="ftr"></div>
 <script src="data.js"></script><script src="app.js"></script>
 <script>
-document.getElementById('wil').innerHTML+=WILAYAS.map((w,i)=>'<option>'+String(i+1).padStart(2,'0')+' — '+w+'</option>').join('');
+document.getElementById('wil').innerHTML+=wilayaOpts();
 const Q={};ORDER.forEach(k=>Q[k]=0);
 const rows=document.getElementById('rows');
 rows.innerHTML=ORDER.map(k=>{const p=PRODUCTS[k];return '<div class="rw"><img src="'+p.img+'" alt="" loading="lazy"><b><span data-ar="'+p.ar.replace(/"/g,'')+'">'+p.name+'</span><small data-ar="'+p.tagAr+'">'+p.tag+'</small></b><div class="stp"><button data-k="'+k+'" data-d="-1" aria-label="-">−</button><output id="q-'+k+'">0</output><button data-k="'+k+'" data-d="1" aria-label="+">+</button></div></div>'}).join('');
@@ -79,5 +79,6 @@ rows.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)retur
 document.getElementById('use').onclick=()=>{if(!ORDER.some(k=>Q[k]>0))return;document.getElementById('msg').value=text();document.getElementById('compte').scrollIntoView({behavior:'smooth'})};
 document.getElementById('cp').onclick=function(){const t=text();const d=this.textContent;try{navigator.clipboard.writeText(t)}catch(e){}this.textContent=App.get()==='ar'?'تم النسخ ✓':'Copié ✓';setTimeout(()=>this.textContent=d,1600)};
 document.getElementById('rf').onsubmit=e=>{e.preventDefault();okForm(e.target,'Demande envoyée ! On vous rappelle vite.','تم إرسال الطلب! سنتّصل بكم قريبا.')};
+document.addEventListener('langchange',recap);
 recap();App.refresh();
 </script></body></html>
