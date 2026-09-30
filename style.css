@@ -442,3 +442,24 @@ html[dir=rtl] .search input{padding:16px 52px 16px 22px}
 .pbot svg{height:100%;filter:drop-shadow(0 18px 14px rgba(22,15,20,.3));transform:rotate(-6deg)}
 @media(max-width:900px){.res{grid-template-columns:1fr}.rstage{min-height:380px}.pbot{height:40%}}
 @media print{.pbot{display:none}}
+
+/* vitrine (remplace le trio) */
+.vitrine{position:relative;margin-top:48px;border-radius:32px;overflow:hidden;aspect-ratio:21/9;min-height:420px;box-shadow:0 40px 70px -40px rgba(22,15,20,.45);background:#0d3b66}
+.vitrine .vbg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.vitrine:hover .vbg{transform:scale(1.04)}
+.vitrine::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,20,40,.55),transparent 55%)}
+.vcard{position:absolute;z-index:2;left:clamp(16px,3vw,40px);top:50%;transform:translateY(-50%);background:#fff;border-radius:24px;padding:24px;max-width:340px;display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.vcard h3{font-size:clamp(26px,2.6vw,36px);line-height:1;letter-spacing:-.03em}
+.vcard p{color:#5a4e55}
+.pdot{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.7);animation:pdl 1.8s infinite}
+@keyframes pdl{70%{box-shadow:0 0 0 9px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
+.vchips{position:absolute;z-index:2;right:clamp(16px,3vw,32px);bottom:clamp(16px,3vw,28px);display:flex;gap:8px;align-items:center;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:8px;border-radius:999px}
+.vchips .vl{font-size:13px;font-weight:600;padding:0 8px 0 10px;white-space:nowrap}
+.vchips a{display:flex;align-items:center;gap:8px;background:var(--bg);border-radius:999px;padding:4px 14px 4px 4px;font-weight:600;font-size:14px;transition:.25s}
+.vchips a:hover{transform:translateY(-3px)}
+.vchips img{width:38px;height:38px;border-radius:50%;object-fit:cover}
+@media(max-width:900px){.vitrine{aspect-ratio:auto;min-height:0;display:flex;flex-direction:column;background:#fff}.vitrine .vbg{position:relative;height:300px}.vitrine::after{display:none}
+ .vcard{position:relative;transform:none;top:auto;left:auto;max-width:none;border-radius:0}
+ .vchips{position:relative;right:auto;bottom:auto;border-radius:0;background:#fff;overflow-x:auto;padding:0 16px 20px;flex-wrap:nowrap}.vchips .vl{display:none}.vchips a{flex:none}}
+html[dir=rtl] .vcard{left:auto;right:clamp(16px,3vw,40px)}html[dir=rtl] .vchips{right:auto;left:clamp(16px,3vw,32px)}
+html[dir=rtl] .vitrine::after{background:linear-gradient(270deg,rgba(10,20,40,.55),transparent 55%)}
